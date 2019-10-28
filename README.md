@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Staging Web Preview
+Here is  https://rplgdc-staging.netlify.com/
