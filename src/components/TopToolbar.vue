@@ -4,7 +4,7 @@
     :flat="true"
     color="rgba(0, 0, 0, 0)"
     :tile="true"
-    class="mt-md-4 px-md-12"
+    class="mt-sm-4 px-md-12 px-sm-6"
     :absolute="true"
   >
     <img src="@/assets/icon.png" alt="icon.png" />
@@ -12,29 +12,29 @@
       <span class="mx-2 font-weight-bold white--text">RPL - GDC</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <span class="d-none d-sm-flex">
-      <v-btn
-        text
+    <span class="d-none d-md-flex">
+      <router-link
         v-for="(route, link) in routeLink"
         :linkName="route"
         :linkPath="route"
         :key="link"
+        :to="`${route.path}`"
       >
-        <router-link :to="`${route.path}`" class="white--text">
+        <v-btn class="white--text" text>
           {{ route.name }}
-        </router-link>
-      </v-btn>
-      <v-btn text>
-        <a href="https://medium.com/rplgdc-laboratory" class="white--text">
+        </v-btn>
+      </router-link>
+      <a href="https://medium.com/rplgdc-laboratory">
+        <v-btn class="white--text" text>
           BLOG
-        </a>
-      </v-btn>
+        </v-btn>
+      </a>
     </span>
-    <v-btn class="join-button" text>
-      JOIN US
+    <v-btn class="join-button__container ml-3 white" text>
+      <span class="join-button">JOIN US</span>
     </v-btn>
 
-    <span class="d-sm-none d-xs-flex">
+    <span class="d-md-none d-sm-flex">
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
           <v-btn icon v-on="on" dark>
@@ -43,28 +43,27 @@
         </template>
 
         <v-list>
-          <v-list-item
+          <router-link
             v-for="(route, link) in routeLink"
             :linkName="route"
             :linkPath="route"
             :key="link"
+            :to="`${route.path}`"
+            class="black--text"
           >
-            <v-list-item-title>
-              <router-link :to="`${route.path}`" class="black--text">
+            <v-list-item>
+              <v-list-item-title>
                 {{ route.name }}
-              </router-link>
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-title>
-              <a
-                href="https://medium.com/rplgdc-laboratory"
-                class="black--text"
-              >
+              </v-list-item-title>
+            </v-list-item>
+          </router-link>
+          <a href="https://medium.com/rplgdc-laboratory" class="black--text">
+            <v-list-item>
+              <v-list-item-title>
                 BLOG
-              </a>
-            </v-list-item-title>
-          </v-list-item>
+              </v-list-item-title>
+            </v-list-item>
+          </a>
         </v-list>
       </v-menu>
     </span>
@@ -100,6 +99,7 @@ export default {
 a
   text-decoration: none
 
-.join-button
-  @extend %button-white
+.join-button__container
+  .join-button
+    @extend %button-text-orange
 </style>

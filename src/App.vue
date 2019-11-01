@@ -3,9 +3,7 @@
     <Jumbotron
       :title="this.$route.path === '/' ? 'RPL - GDC' : this.$route.name"
     />
-    <transition>
-      <router-view />
-    </transition>
+    <router-view />
   </v-app>
 </template>
 

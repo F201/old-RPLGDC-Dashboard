@@ -1,12 +1,22 @@
 <template>
-  <v-responsive :class="`jumbotron ${jumbotronImg()}`">
+  <v-responsive :class="`jumbotron d-flex align-center ${jumbotronImg()}`">
     <TopToolbar />
-    <div class="jumbotron__content">
+    <div class="jumbotron__content d-flex align-center flex-column">
       <div class="jumbotron__content--title">{{ title }}</div>
-      <div class="jumbotron__content--desc" v-if="this.$route.path === '/'">
+      <div
+        class="jumbotron__content--desc mt-n5"
+        v-if="this.$route.path === '/'"
+      >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
         purus sit amet luctus venenatis, lectus
       </div>
+      <v-btn
+        class="jumbotron__content--button mt-4"
+        v-if="this.$route.path === '/'"
+        text
+      >
+        <a class="jumbotron__content--button-learn">LEARN MORE</a>
+      </v-btn>
     </div>
   </v-responsive>
 </template>
@@ -40,12 +50,10 @@ export default {
 
 <style lang="sass" scoped>
 .jumbotron
-  display: flex
-  height: 120vh
+  height: 125vh
   background-position: center center
   background-size: cover
   background-repeat: no-repeat
-  align-items: center
 
   &.jumbotron--home
     background-image: url("../assets/jumbotron1.png")
@@ -57,12 +65,9 @@ export default {
     background-image: url("../assets/jumbotron3.png")
 
 .jumbotron__content
-  display: flex
-  align-items: center
-  flex-direction: column
   text-align: center
   color: white
-  margin-top: -5.5cm
+  margin-top: -5cm
 
   .jumbotron__content--title
     font-family: $raleway
@@ -72,6 +77,14 @@ export default {
     font-family: $roboto
     font-size: 20px
     width: 339px
+
+  .jumbotron__content--button
+    background-color: $white-color
+
+    .jumbotron__content--button-learn
+      @extend %button-text-orange
+      font-family: $raleway
+      font-size: 16px
 </style>
 
 <style scoped>

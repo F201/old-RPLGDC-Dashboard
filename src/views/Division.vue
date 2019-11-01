@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
-    <h1>This is a division page</h1>
+  <div class="division">
+    <h1>This is division page</h1>
   </div>
 </template>
