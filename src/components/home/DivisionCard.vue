@@ -1,5 +1,10 @@
 <template>
-  <v-card elevation="5" class="pa-10 text-center" tile>
+  <v-card
+    max-width="1096px"
+    elevation="5"
+    class="pa-10 text-center white mx-auto"
+    tile
+  >
     <div class="icon-wrapper d-flex justify-space-around flex-wrap">
       <div
         class="icon-container mx-3"
@@ -12,7 +17,9 @@
         }}</v-card-title>
       </div>
     </div>
-    <v-btn depressed class="mx-auto mt-6">SEE DETAIL</v-btn>
+    <v-card-actions>
+      <v-btn depressed class="mx-auto mt-6 white--text">SEE DETAIL</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -46,11 +53,9 @@ export default {
 
 <style lang="sass" scoped>
 .v-card
-  background: $white-gradient
   font-family: $raleway
   border-radius: 40px
 
   .v-btn
-    color: white
-    background: $orange-color
+    background: $orange-gradient
 </style>

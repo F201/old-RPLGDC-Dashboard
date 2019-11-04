@@ -52,7 +52,7 @@
             class="black--text"
           >
             <v-list-item>
-              <v-list-item-title>
+              <v-list-item-title class="text-uppercase">
                 {{ route.name }}
               </v-list-item-title>
             </v-list-item>
@@ -91,8 +91,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import "@/sass/variables"
-
 .v-toolbar
   font-family: $raleway
 
@@ -101,5 +99,5 @@ a
 
 .join-button__container
   .join-button
-    @extend %button-text-orange
+    color: $orange-color
 </style>

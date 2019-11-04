@@ -1,5 +1,5 @@
 <template>
-  <v-carousel height="auto" :continuous="false">
+  <v-carousel height="auto" :continuous="false" class="mx-auto">
     <v-carousel-item
       v-for="(member, index) in members.slice(
         0,
@@ -7,7 +7,7 @@
       )"
       :key="index"
     >
-      <div class="carousel__bg pa-6 pb-12" height="100%">
+      <div class="carousel__bg pa-6 pb-12 white" height="100%">
         <v-row
           class="fill-height d-flex justify-space-around flex-column flex-sm-row"
           align="center"
@@ -84,10 +84,9 @@ export default {
 .v-carousel
   border-radius: 40px
   z-index: 1
+  max-width: 1095px
 
   .carousel__bg
-    background: $white-gradient
-
     .carousel__content--img
       width: 202px
       height: 202px

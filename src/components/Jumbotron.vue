@@ -2,7 +2,7 @@
   <v-responsive :class="`jumbotron d-flex align-center ${jumbotronImg()}`">
     <TopToolbar />
     <div class="jumbotron__content d-flex align-center flex-column">
-      <div class="jumbotron__content--title">{{ title }}</div>
+      <div class="jumbotron__content--title text-uppercase">{{ title }}</div>
       <div
         class="jumbotron__content--desc mt-n5"
         v-if="this.$route.path === '/'"
@@ -11,7 +11,7 @@
         purus sit amet luctus venenatis, lectus
       </div>
       <v-btn
-        class="jumbotron__content--button mt-4"
+        class="jumbotron__content--button mt-4 white"
         v-if="this.$route.path === '/'"
         text
       >
@@ -51,18 +51,18 @@ export default {
 <style lang="sass" scoped>
 .jumbotron
   height: 125vh
-  background-position: center center
+  background-position: bottom center
   background-size: cover
   background-repeat: no-repeat
 
   &.jumbotron--home
-    background-image: url("../assets/jumbotron1.png")
+    background-image: url("../assets/home/jumbotron.png")
 
   &.jumbotron--division
-    background-image: url("../assets/jumbotron2.png")
+    background-image: url("../assets/division/jumbotron.png")
 
   &.jumbotron--product
-    background-image: url("../assets/jumbotron3.png")
+    background-image: url("../assets/product/jumbotron.png")
 
 .jumbotron__content
   text-align: center
@@ -72,29 +72,19 @@ export default {
   .jumbotron__content--title
     font-family: $raleway
     font-size: 75px
+    @media only screen and (min-width: 768px)
+      font-size: 120px
 
   .jumbotron__content--desc
     font-family: $roboto
     font-size: 20px
     width: 339px
+    @media only screen and (min-width: 768px)
+      width: 439px
 
   .jumbotron__content--button
-    background-color: $white-color
-
     .jumbotron__content--button-learn
-      @extend %button-text-orange
+      color: $orange-color
       font-family: $raleway
       font-size: 16px
-</style>
-
-<style scoped>
-@media only screen and (min-width: 768px) {
-  .jumbotron__content .jumbotron__content--title {
-    font-size: 120px;
-  }
-
-  .jumbotron__content .jumbotron__content--desc {
-    width: 439px;
-  }
-}
 </style>
