@@ -4,7 +4,7 @@
     :flat="true"
     color="rgba(0, 0, 0, 0)"
     :tile="true"
-    class="mt-sm-4 px-md-12 px-sm-6"
+    class="mt-sm-4 px-sm-6"
     :absolute="true"
   >
     <img src="@/assets/icon.png" alt="icon.png" />
@@ -93,6 +93,8 @@ export default {
 <style lang="sass" scoped>
 .v-toolbar
   font-family: $raleway
+  @media only screen and (min-width: 1280px)
+    margin: auto 3cm
 
 a
   text-decoration: none
@@ -100,4 +102,5 @@ a
 .join-button__container
   .join-button
     color: $orange-color
+    display: block
 </style>

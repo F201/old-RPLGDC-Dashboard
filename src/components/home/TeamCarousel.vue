@@ -90,7 +90,7 @@ export default {
     .carousel__content--img
       width: 202px
       height: 202px
-      background: $orange-color
+      background: $orange-gradient
       border-radius: 100%
       @media only screen and (min-width: 1025px)
         width: 232px

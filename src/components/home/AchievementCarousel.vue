@@ -68,7 +68,7 @@ export default {
           name: "juara 1 lorem ipsum",
           year: "2020",
           product: "Produk atau judul pemenang",
-          img: require("@/assets/foto.png"),
+          img: require("@/assets/achievement/foto.png"),
           teams: [
             { name: "Anggota tim pemenang", major: "jurusan" },
             { name: "Anggota tim pemenang", major: "jurusan" },
@@ -79,7 +79,7 @@ export default {
           name: "juara 1 lorem ipsum",
           year: "2020",
           product: "Produk atau judul pemenang",
-          img: require("@/assets/foto.png"),
+          img: require("@/assets/achievement/foto.png"),
           teams: [
             { name: "Anggota tim pemenang", major: "jurusan" },
             { name: "Anggota tim pemenang", major: "jurusan" },
@@ -90,7 +90,7 @@ export default {
           name: "juara 1 lorem ipsum",
           year: "2020",
           product: "Produk atau judul pemenang",
-          img: require("@/assets/foto.png"),
+          img: require("@/assets/achievement/foto.png"),
           teams: [
             { name: "Anggota tim pemenang", major: "jurusan" },
             { name: "Anggota tim pemenang", major: "jurusan" },

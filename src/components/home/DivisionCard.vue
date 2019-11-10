@@ -7,7 +7,7 @@
   >
     <div class="icon-wrapper d-flex justify-space-around flex-wrap">
       <div
-        class="icon-container mx-3"
+        class="icon-container mx-4"
         v-for="(division, index) in divisions"
         :key="index"
       >
