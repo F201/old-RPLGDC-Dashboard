@@ -132,7 +132,7 @@
   height: 100vh
 
 .v-card
-  overflow-y: scroll
+  overflow-y: auto
   max-height: 837px
   @media only screen and (max-width: 768px)
     height: 100vh
