@@ -14,7 +14,9 @@
               <v-card-title>{{ division.title }}</v-card-title>
               <v-card-text>{{ division.text }}</v-card-text>
               <v-card-actions>
-                <v-btn depressed class="white--text">SEE DETAIL</v-btn>
+                <v-btn depressed class="white--text" @click="toggleOverlay()">
+                  SEE DETAIL
+                </v-btn>
               </v-card-actions>
             </div>
             <v-img
@@ -25,6 +27,7 @@
           </v-card>
         </v-col>
       </v-row>
+      <DivisionOverlay />
     </v-container>
     <Footer />
   </div>
@@ -70,10 +73,12 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
+import DivisionOverlay from "@/components/division/DivisionOverlay.vue";
 
 export default {
   components: {
-    Footer
+    Footer,
+    DivisionOverlay
   },
   data() {
     return {
@@ -104,6 +109,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    toggleOverlay: function() {
+      this.$root.$emit("toggle", true);
+    }
   }
 };
 </script>

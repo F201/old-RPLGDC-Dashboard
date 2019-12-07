@@ -10,7 +10,7 @@
             class="align-self-start"
             contain
           ></v-img>
-          <div class="carousel__content mb-4 ml-sm-6">
+          <div class="carousel__content--container mb-4 ml-sm-6">
             <div class="carousel__content">
               <div class="carousel__content--name text-uppercase">
                 {{ achievement.name }}
@@ -44,9 +44,9 @@
                     >
                     <v-list-item-content>
                       <v-list-item-title>{{ team.name }}</v-list-item-title>
-                      <v-list-item-subtitle>{{
-                        team.major
-                      }}</v-list-item-subtitle>
+                      <v-list-item-subtitle>
+                        {{ team.major }}
+                      </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
