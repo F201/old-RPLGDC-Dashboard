@@ -3,6 +3,13 @@
     <v-container class="px-sm-6">
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
+          <div class="section-news">
+            <TextPlaceholder
+              :header="sectionNews.header"
+              :content="sectionNews.content"
+            />
+            <NewsCarousel class="mt-6" />
+          </div>
           <div class="section-division">
             <TextPlaceholder
               :header="sectionDivision.header"
@@ -28,6 +35,13 @@
                 class="my-5 my-md-10 flex-grow-1"
               />
             </div>
+          </div>
+          <div class="section-activity">
+            <TextPlaceholder
+              :header="sectionActivity.header"
+              :content="sectionActivity.content"
+            />
+            <ActivityCarousel class="mt-6" />
           </div>
           <div class="section-achievement">
             <TextPlaceholder
@@ -84,6 +98,8 @@ import TextPlaceholder from "@/components/home/TextPlaceholder";
 import DivisionCard from "@/components/home/DivisionCard";
 import TeamCarousel from "@/components/home/TeamCarousel";
 import AchievementCarousel from "@/components/home/AchievementCarousel";
+import ActivityCarousel from "@/components/home/ActivityCarousel";
+import NewsCarousel from "@/components/home/NewsCarousel";
 import Footer from "@/components/Footer";
 
 export default {
@@ -93,6 +109,8 @@ export default {
     DivisionCard,
     TeamCarousel,
     AchievementCarousel,
+    ActivityCarousel,
+    NewsCarousel,
     Footer
   },
   data() {
@@ -131,8 +149,34 @@ export default {
         header: "OUR LATEST ACHIEVEMENT",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
+      },
+      sectionActivity: {
+        header: "OUR LATEST ACTIVITY",
+        content:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
+      },
+      sectionNews: {
+        header: "OUR LATEST NEWS",
+        content:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
       }
     };
+  },
+  methods: {
+    buttonColor() {
+      let buttons = document.querySelectorAll(".v-window__container .v-btn");
+      for (let j = 0; j < buttons.length; j++) {
+        buttons[j].style.backgroundColor = "#F0793C";
+        buttons[j].onclick = () => {
+          this.buttonColor();
+        };
+      }
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.buttonColor();
+    });
   }
 };
 </script>

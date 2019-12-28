@@ -1,5 +1,5 @@
 <template>
-  <v-carousel height="auto" :continuous="false" class="mx-auto">
+  <v-carousel height="auto" :continuous="false" class="mx-auto" hide-delimiters>
     <v-carousel-item v-for="(achievement, index) in achievements" :key="index">
       <div class="carousel__bg pa-6 pt-0 pb-12 pt-sm-6 white" height="100%">
         <v-row class="fill-height d-flex flex-wrap" justify="center">
@@ -107,6 +107,7 @@ export default {
 .v-carousel
   border-radius: 40px
   max-width: 1095px
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
 
   .carousel__bg
     .v-icon

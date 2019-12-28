@@ -1,5 +1,5 @@
 <template>
-  <v-carousel height="auto" :continuous="false" class="mx-auto">
+  <v-carousel height="auto" :continuous="false" class="mx-auto" hide-delimiters>
     <v-carousel-item
       v-for="(member, index) in members.slice(
         0,
@@ -85,6 +85,7 @@ export default {
   border-radius: 40px
   z-index: 1
   max-width: 1095px
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
 
   .carousel__bg
     .carousel__content--img
