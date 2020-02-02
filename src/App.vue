@@ -2,6 +2,7 @@
   <v-app>
     <Jumbotron
       :title="this.$route.path === '/' ? 'RPL - GDC' : this.$route.name"
+      v-if="this.$route.name != 'productDetails'"
     />
     <router-view />
   </v-app>

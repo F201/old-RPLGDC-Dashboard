@@ -1,20 +1,24 @@
 <template>
   <div class="product">
     <v-container class="px-sm-6 mt-12">
-      <v-layout row wrap>
-        <v-flex
-          xs12
-          sm6
-          md4
-          v-for="productCard in productList"
-          :key="productCard.id"
-        >
-          <ProductCards :productCard="productCard" />
-        </v-flex>
-        <v-btn depressed class="mx-auto white--text">
-          SEE MORE
-        </v-btn>
-      </v-layout>
+      <v-row class="px-sm-6">
+        <v-col class="px-sm-6">
+          <div class="d-flex flex-wrap justify-center">
+            <div
+              v-for="productCard in productList"
+              :key="productCard.id"
+              class="mx-lg-12"
+            >
+              <ProductCards :productCard="productCard" />
+            </div>
+          </div>
+          <div class="d-flex mt-6">
+            <v-btn depressed class="mx-auto white--text" to="/product-details">
+              SEE MORE
+            </v-btn>
+          </div>
+        </v-col>
+      </v-row>
     </v-container>
     <Footer />
   </div>

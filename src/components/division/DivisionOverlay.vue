@@ -144,6 +144,7 @@
 
 .content-wrapper
   .content-container
+    margin: 0 10px
     .content-text
       .content-text__title
         font-family: $raleway

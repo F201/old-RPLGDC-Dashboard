@@ -31,6 +31,7 @@
           v-show="this.$route.path === '/'"
           fab
           depressed
+          @click="goTo('top')"
         >
           <v-icon
             class="jumbotron__content--button-arrow display-2"
@@ -81,6 +82,16 @@ export default {
   },
   components: {
     TopToolbar
+  },
+  methods: {
+    goTo: el => {
+      const element = document.getElementById(el);
+      const top = element.offsetTop;
+      window.scrollTo({
+        top: top - 20,
+        behavior: "smooth"
+      });
+    }
   }
 };
 </script>
@@ -200,11 +211,16 @@ export default {
 
   .rocket--product
     background-image: url("../assets/product/jumbotron_rocket.png")
-    width: 425px
-    height: 468px
+    width: 325px
+    height: 368px
     background-position: left center
-    bottom: 280px
-    left: 90px
+    bottom: 80px
+    left: 20px
+    @media only screen and (min-width: 1025px)
+      width: 425px
+      height: 468px
+      bottom: 280px
+      left: 90px
 
   .jumbotron_object
     z-index: -1

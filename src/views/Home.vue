@@ -3,7 +3,7 @@
     <v-container class="px-sm-6">
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
-          <div class="section-news">
+          <div id="top" class="section-news">
             <TextPlaceholder
               :header="sectionNews.header"
               :content="sectionNews.content"
@@ -177,6 +177,11 @@ export default {
     this.$nextTick(() => {
       this.buttonColor();
     });
+    // fetch("https://www.getpostman.com/collections/66da5d032794ab955c70")
+    //   .then(resp => resp.json())
+    //   .then(function(data) {
+    //     console.log(data);
+    //   });
   }
 };
 </script>

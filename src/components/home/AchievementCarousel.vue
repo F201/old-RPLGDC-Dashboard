@@ -1,7 +1,7 @@
 <template>
   <v-carousel height="auto" :continuous="false" class="mx-auto" hide-delimiters>
     <v-carousel-item v-for="(achievement, index) in achievements" :key="index">
-      <div class="carousel__bg pa-6 pt-0 pb-12 pt-sm-6 white" height="100%">
+      <div class="carousel__bg pa-6 pt-0 pb-12 pt-sm-6 white">
         <v-row class="fill-height d-flex flex-wrap" justify="center">
           <v-img
             :src="`${achievement.img}`"

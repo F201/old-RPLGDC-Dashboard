@@ -7,7 +7,7 @@
       )"
       :key="index"
     >
-      <div class="carousel__bg pa-6 pb-12 white" height="100%">
+      <div class="carousel__bg pa-6 pb-12 white">
         <v-row
           class="fill-height d-flex justify-space-around flex-column flex-sm-row"
           align="center"

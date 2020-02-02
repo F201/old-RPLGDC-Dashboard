@@ -81,10 +81,12 @@ export default {
   },
   created() {
     this.$router.options.routes.forEach(route => {
-      this.routeLink.push({
-        name: route.name,
-        path: route.path
-      });
+      if (route.name != "productDetails") {
+        this.routeLink.push({
+          name: route.name,
+          path: route.path
+        });
+      }
     });
   }
 };

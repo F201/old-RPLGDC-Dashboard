@@ -18,7 +18,9 @@
       </div>
     </div>
     <v-card-actions>
-      <v-btn depressed class="mx-auto mt-6 white--text">SEE DETAIL</v-btn>
+      <v-btn depressed class="mx-auto mt-6 white--text" to="/division"
+        >SEE DETAIL</v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>
