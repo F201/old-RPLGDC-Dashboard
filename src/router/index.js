@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Division from "../views/Division.vue";
 import Product from "../views/Product.vue";
 import ProductDetails from "../views/ProductDetails.vue";
+import Recruitment from "../views/Recruitment.vue";
 
 Vue.use(VueRouter);
 
@@ -32,6 +33,11 @@ const routes = [
     path: "/product-details",
     name: "productDetails",
     component: ProductDetails
+  },
+  {
+    path: "/recruitment",
+    name: "recruitment",
+    component: Recruitment
   }
 ];
 

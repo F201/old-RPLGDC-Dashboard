@@ -30,7 +30,7 @@
         </v-btn>
       </a>
     </span>
-    <v-btn class="join-button__container ml-3 white" text>
+    <v-btn class="join-button__container ml-3 white" to="/recruitment" text>
       <span class="join-button">JOIN US</span>
     </v-btn>
 
@@ -81,7 +81,11 @@ export default {
   },
   created() {
     this.$router.options.routes.forEach(route => {
-      if (route.name != "productDetails") {
+      if (
+        route.name == "home" ||
+        route.name == "division" ||
+        route.name == "product"
+      ) {
         this.routeLink.push({
           name: route.name,
           path: route.path

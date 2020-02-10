@@ -1,5 +1,10 @@
 <template>
-  <footer class="footer">
+  <footer
+    :class="{
+      footer: true,
+      'footer--register': this.$route.path == '/recruitment'
+    }"
+  >
     <div class="footer__content" v-if="this.$route.path === '/'">
       <div class="footer__content--title">WHAT ARE YOU WAITING FOR?</div>
       <div class="footer__content--desc">
@@ -26,6 +31,10 @@
 </template>
 
 <style lang="sass" scoped>
+footer.footer--register
+  height: 100px
+  margin-top: 0
+
 .footer
   width: auto
   height: 495px
@@ -87,8 +96,10 @@ export default {
   name: "Footer",
   mounted() {
     const footer = document.getElementsByTagName("footer")[0];
-    footer.style.backgroundImage =
-      "url(" + require(`@/assets/${this.$route.name}/bottom.png`) + ")";
+    if (this.$route.name !== "recruitment") {
+      footer.style.backgroundImage =
+        "url(" + require(`@/assets/${this.$route.name}/bottom.png`) + ")";
+    }
   }
 };
 </script>

@@ -2,7 +2,11 @@
   <v-app>
     <Jumbotron
       :title="this.$route.path === '/' ? 'RPL - GDC' : this.$route.name"
-      v-if="this.$route.name != 'productDetails'"
+      v-if="
+        this.$route.name == 'home' ||
+          this.$route.name == 'division' ||
+          this.$route.name == 'product'
+      "
     />
     <router-view />
   </v-app>

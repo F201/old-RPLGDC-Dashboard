@@ -1,5 +1,5 @@
 <template>
-  <div class="division">
+  <div class="division white">
     <v-container class="px-sm-6 mt-12">
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
