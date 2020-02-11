@@ -30,9 +30,8 @@
         </v-btn>
       </a>
     </span>
-    <v-btn class="join-button__container ml-3 white" to="/recruitment" text>
-      <span class="join-button">JOIN US</span>
-    </v-btn>
+
+    <RecruitmentPrompt />
 
     <span class="d-md-none d-sm-flex">
       <v-menu offset-y>
@@ -71,12 +70,19 @@
 </template>
 
 <script>
+import RecruitmentPrompt from "@/components/RecruitmentPrompt";
+
 export default {
   name: "TopToolbar",
   props: ["linkName", "linkPath"],
+  components: {
+    RecruitmentPrompt
+  },
   data() {
     return {
-      routeLink: []
+      routeLink: [],
+      dialog: true,
+      check: false
     };
   },
   created() {
@@ -104,9 +110,4 @@ export default {
 
 a
   text-decoration: none
-
-.join-button__container
-  .join-button
-    color: $orange-color
-    display: block
 </style>
