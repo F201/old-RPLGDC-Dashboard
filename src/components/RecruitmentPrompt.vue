@@ -1,0 +1,171 @@
+<template>
+  <v-dialog v-model="dialog" width="500">
+    <template v-slot:activator="{ on }">
+      <v-btn class="join-button__container ml-3 white" v-on="on" text>
+        <span class="join-button">
+          JOIN US
+        </span>
+      </v-btn>
+    </template>
+
+    <v-card class="d-flex flex-column pa-12">
+      <template v-if="check == false && result == false">
+        <v-btn class="white--text" depressed text @click="check = true">
+          CHECK REGISTRATION STATUS
+        </v-btn>
+        <v-btn class="white--text mt-6" depressed text to="/recruitment">
+          REGISTER NOW
+        </v-btn>
+      </template>
+
+      <template v-if="check">
+        <h3>CHECK REGISTRATION STATUS</h3>
+        <div class="mt-4">
+          <label for="input-nim">
+            NIM
+            <input type="text" id="input-nim" v-model="nimInput" />
+          </label>
+        </div>
+        <div class="mt-6 text-center">
+          <v-btn class="white--text" depressed text @click="checkStatus">
+            CHECK REGISTRATION STATUS
+          </v-btn>
+        </div>
+        <v-btn class="float-button back-button" icon @click="check = false">
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+      </template>
+
+      <template v-if="result">
+        <div>
+          <label for="output-nama">
+            Nama
+            <input
+              type="text"
+              id="output-nama"
+              class="output"
+              v-model="user.nama"
+            />
+          </label>
+        </div>
+        <div class="mt-3">
+          <label for="output-nim">
+            NIM
+            <input
+              type="text"
+              id="output-nim"
+              class="output"
+              v-model="user.nim"
+            />
+          </label>
+        </div>
+        <div class="mt-3">
+          <label for="output-divisi">
+            Divisi
+            <input
+              type="text"
+              id="output-divisi"
+              class="output"
+              v-model="user.divisi"
+            />
+          </label>
+        </div>
+        <v-btn
+          class="float-button back-button"
+          icon
+          @click="(result = false), (check = true)"
+        >
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+      </template>
+
+      <v-btn class="float-button close-button" icon @click="closeDialog">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-card>
+  </v-dialog>
+</template>
+
+<script>
+export default {
+  name: "RecruitmentPrompt",
+  data() {
+    return {
+      dialog: false,
+      check: false,
+      nimInput: "",
+      user: {
+        nim: "0123456789",
+        nama: "Muhammad Rayhan Hakim",
+        divisi: "Front-End"
+      },
+      result: false
+    };
+  },
+  methods: {
+    closeDialog() {
+      this.dialog = false;
+      this.check = false;
+      this.result = false;
+    },
+    checkStatus() {
+      if (this.nimInput === this.user.nim) {
+        this.check = false;
+        this.result = true;
+      }
+    }
+  }
+};
+</script>
+
+<style lang="sass" scoped>
+.v-card.v-sheet
+  position: relative
+
+  .v-btn:not(.float-button)
+    font-family: $raleway
+    background: $orange-gradient
+    font-size: 16px
+
+  .float-button
+    position: absolute
+    top: 6px
+
+    .v-icon
+      color: $orange-color
+
+  .close-button
+    right: 6px
+
+  .back-button
+    left: 6px
+
+  label, h3
+    font-family: $raleway
+    color: $orange-color
+
+  h3
+    text-align: center
+
+  label
+    font-size: 14px
+
+  input
+    background-color: #F2F2F2
+    border-radius: 5px
+    height: 32px
+    padding: 0 7px
+    width: 100%
+    color: black
+    font-family: arial
+
+  input.output
+    background-color: #fff
+    padding-left: 0
+
+.join-button__container
+  .join-button
+    font-family: $raleway
+    color: $orange-color
+    display: block
+</style>

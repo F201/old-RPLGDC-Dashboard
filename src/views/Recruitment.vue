@@ -580,6 +580,10 @@ export default {
 h1, label, .v-btn
   font-family: $raleway
 
+.v-btn
+  background: $orange-gradient
+  color: white
+
 #no-bg
   background-color: rgba(0, 0, 0, 0)
 
@@ -591,10 +595,6 @@ h1, label, .v-btn
 
   .v-stepper__content
     padding: 0
-
-    .v-btn
-      background: $orange-gradient
-      color: white
 
     .prev-button, .v-btn
       margin: 0 10px 0
@@ -783,6 +783,7 @@ h1, label, .v-btn
     padding: 5px 7px
     text-transform: uppercase
     width: 170px
+    position: relative
 
   input[type="date"]::-webkit-inner-spin-button
     display: none
@@ -796,7 +797,7 @@ h1, label, .v-btn
     left: 0
     right: 0
     bottom: 0
-    width: auto
+    width: 170px
     height: auto
     color: transparent
     background: transparent

@@ -11,9 +11,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
         purus sit amet luctus venenatis, lectus
       </div>
-      <v-btn class="white mt-4" depressed>
-        <span class="join-button">JOIN US</span>
-      </v-btn>
+      <RecruitmentPrompt />
     </div>
     <div class="footer__bottom">
       <div class="footer__bottom--title">FOR MORE INFORMATION</div>
@@ -29,6 +27,24 @@
     </div>
   </footer>
 </template>
+
+<script>
+import RecruitmentPrompt from "@/components/RecruitmentPrompt";
+
+export default {
+  name: "Footer",
+  components: {
+    RecruitmentPrompt
+  },
+  mounted() {
+    const footer = document.getElementsByTagName("footer")[0];
+    if (this.$route.name !== "recruitment") {
+      footer.style.backgroundImage =
+        "url(" + require(`@/assets/${this.$route.name}/bottom.png`) + ")";
+    }
+  }
+};
+</script>
 
 <style lang="sass" scoped>
 footer.footer--register
@@ -65,11 +81,6 @@ footer.footer--register
       font-size: 20px
       width: 60%
 
-    .join-button
-      color: $orange-color
-      font-family: $raleway
-      font-size: 16px
-
   .footer__bottom
     position: absolute
     bottom: 0
@@ -90,16 +101,3 @@ footer.footer--register
         font-size: 30pt
         color: white
 </style>
-
-<script>
-export default {
-  name: "Footer",
-  mounted() {
-    const footer = document.getElementsByTagName("footer")[0];
-    if (this.$route.name !== "recruitment") {
-      footer.style.backgroundImage =
-        "url(" + require(`@/assets/${this.$route.name}/bottom.png`) + ")";
-    }
-  }
-};
-</script>
