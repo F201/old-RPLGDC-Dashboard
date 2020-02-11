@@ -114,6 +114,8 @@
                   solo
                   flat
                   v-model="major"
+                  color="#F0793C"
+                  item-color="#F0793C"
                 ></v-select>
                 <div>
                   <label>Angkatan</label>
@@ -146,11 +148,11 @@
                     :for="`${divisions.id}`"
                     class="radio__container radio__item radio__item--divisi d-flex justify-space-between"
                   >
-                    {{ divisions.value }}
+                    {{ divisions.name }}
                     <input
                       type="radio"
                       name="divisi"
-                      :id="`${divisions.id}`"
+                      :id="`${divisions.value}`"
                       :value="divisions.value"
                       v-model="divisi"
                     />
@@ -410,23 +412,28 @@ export default {
       generation: ["2017", "2018", "2019"],
       division: [
         {
-          value: "Mobile Programming",
-          id: "mobile",
+          name: "Mobile Programming",
+          value: "mobile",
           icon: require("@/assets/mobile.png")
         },
         {
-          value: "Web Programming",
-          id: "web",
+          name: "Front-End Developer",
+          value: "frontend",
           icon: require("@/assets/web.png")
         },
         {
-          value: "Game Programming",
-          id: "game",
+          name: "Back-End Developer",
+          value: "backend",
+          icon: require("@/assets/web.png")
+        },
+        {
+          name: "Game Programming",
+          value: "game",
           icon: require("@/assets/game.png")
         },
         {
-          value: "UI/UX",
-          id: "uiux",
+          name: "UI/UX",
+          value: "uiux",
           icon: require("@/assets/uiux.png")
         }
       ],
@@ -472,6 +479,7 @@ export default {
           this.steps += 1;
         }
       }
+      window.scrollTo(0, 0);
     },
 
     prevStep() {
