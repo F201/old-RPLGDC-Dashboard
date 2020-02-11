@@ -368,6 +368,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Footer from "@/components/Footer";
 export default {
   components: {
@@ -447,7 +448,11 @@ export default {
       image: null
     };
   },
-
+  computed: {
+    ...mapGetters({
+      loading: "recruitment/loading"
+    })
+  },
   methods: {
     nextStep() {
       if (this.steps == 1) {
@@ -488,6 +493,7 @@ export default {
         this.cvName = "";
         return false;
       } else {
+        this.fileCv = file.files[0];
         this.cvName = filePath;
       }
     },
@@ -502,6 +508,7 @@ export default {
         this.motivationName = "";
         return false;
       } else {
+        this.motivation = file.files[0];
         this.motivationName = filePath;
       }
     },
@@ -520,6 +527,7 @@ export default {
         imageContainer[0].style.backgroundImage = "";
         return false;
       } else {
+        this.image = file.files[0];
         this.imagePreview = URL.createObjectURL(file.files[0]);
         for (let i = 0; i < imageContainer.length; i++) {
           imageContainer[i].style.backgroundImage = `url(${this.imagePreview})`;
@@ -543,11 +551,23 @@ export default {
           radio[i].classList.add("radio__selected");
         });
       }
+    },
+    submit() {
+      console.log(this.name, this.date, this.major, this.genderType, this.year);
+      let fileData = new FormData();
+      fileData.append("nama_lengkap", this.name);
+      fileData.append("nim", this.nim);
+      fileData.append("tanggal_lahir", this.birthdate);
+      fileData.append("jenis_kelamin", this.genderType);
+      fileData.append("jurusan", this.major);
+      fileData.append("angkatan", this.year);
+      fileData.append("divisi", this.divisi);
+      fileData.append("foto_profile", this.image);
+      fileData.append("cv", this.fileCv);
+      fileData.append("motivation_letter", this.motivation);
+      fileData.append("portofolio", this.portfolio);
+      this.$store.dispatch("recruitment/postRecruitment", fileData);
     }
-
-    // submit() {
-    //   console.log(this.name, this.date, this.major, this.genderType, this.year);
-    // }
   },
 
   mounted() {
