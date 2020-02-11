@@ -18,9 +18,10 @@ export default {
       commit('LOADING');
       return api.recruitment
         .postRecruitment(data)
-        .then(({ data }) => {
+        .then((tes) => {
+          console.log(tes)
           commit('LOADED');
-          return data;
+          return tes;
         })
         .catch(err => {
           commit('LOADED');
