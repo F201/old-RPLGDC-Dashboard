@@ -104,9 +104,6 @@ export default {
             data.division[0].activities,
             data.division[0].tools
           );
-        })
-        .catch(err => {
-          console.log(err);
         });
     }
   },
@@ -115,9 +112,6 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.divisions = data.data;
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 };

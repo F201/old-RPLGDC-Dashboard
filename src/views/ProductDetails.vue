@@ -160,9 +160,6 @@ export default {
       .then(data => {
         this.contents = data.data;
         console.log(this.contents);
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 };

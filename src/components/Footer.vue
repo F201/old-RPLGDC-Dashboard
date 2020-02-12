@@ -51,9 +51,6 @@ export default {
       .then(data => {
         this.instagram = data.data[0];
         this.line = data.data[1];
-      })
-      .catch(err => {
-        console.log(err);
       });
   },
   mounted() {

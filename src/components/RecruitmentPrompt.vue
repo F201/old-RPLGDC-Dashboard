@@ -25,7 +25,12 @@
           </label>
         </div>
         <div class="mt-6 text-center">
-          <v-btn class="white--text" depressed text @click="checkStatus()" :loading="loading"
+          <v-btn
+            class="white--text"
+            depressed
+            text
+            @click="checkStatus()"
+            :loading="loading"
             >CHECK REGISTRATION STATUS</v-btn
           >
         </div>
@@ -122,9 +127,6 @@ export default {
           } else {
             document.getElementById("input-nim").style.border = "2px red solid";
           }
-        })
-        .catch(err => {
-          console.log(err);
         });
     }
   }

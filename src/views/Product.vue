@@ -45,9 +45,6 @@ export default {
       .then(data => {
         console.log(data);
         this.productList = data.data;
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 };

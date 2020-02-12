@@ -66,9 +66,6 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.divisions = data.data;
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 };

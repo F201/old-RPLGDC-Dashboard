@@ -70,9 +70,6 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.members = data.data;
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 };
