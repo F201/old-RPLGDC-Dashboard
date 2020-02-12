@@ -159,7 +159,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.contents = data.data;
-        console.log(this.contents);
+        // console.log(this.contents);
       });
   }
 };

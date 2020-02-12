@@ -43,7 +43,6 @@ export default {
     fetch("https://rplgdc-dashboard.herokuapp.com/products")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.productList = data.data;
       });
   }

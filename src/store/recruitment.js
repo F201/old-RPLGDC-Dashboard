@@ -17,7 +17,7 @@ export default {
     postRecruitment({ commit }, data) {
       commit("LOADING");
       return api.recruitment.postRecruitment(data).then(tes => {
-        console.log(tes);
+        // console.log(tes);
         commit("LOADED");
         return tes;
       });
