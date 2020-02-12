@@ -2,20 +2,18 @@
   <v-dialog v-model="dialog" width="500">
     <template v-slot:activator="{ on }">
       <v-btn class="join-button__container ml-3 white" v-on="on" text>
-        <span class="join-button">
-          JOIN US
-        </span>
+        <span class="join-button">JOIN US</span>
       </v-btn>
     </template>
 
     <v-card class="d-flex flex-column pa-12">
       <template v-if="check == false && result == false">
-        <v-btn class="white--text" depressed text @click="check = true">
-          CHECK REGISTRATION STATUS
-        </v-btn>
-        <v-btn class="white--text mt-6" depressed text to="/recruitment">
-          REGISTER NOW
-        </v-btn>
+        <v-btn class="white--text" depressed text @click="check = true"
+          >CHECK REGISTRATION STATUS</v-btn
+        >
+        <v-btn class="white--text mt-6" depressed text to="/recruitment"
+          >REGISTER NOW</v-btn
+        >
       </template>
 
       <template v-if="check">
@@ -27,9 +25,9 @@
           </label>
         </div>
         <div class="mt-6 text-center">
-          <v-btn class="white--text" depressed text @click="checkStatus">
-            CHECK REGISTRATION STATUS
-          </v-btn>
+          <v-btn class="white--text" depressed text @click="checkStatus()" :loading="loading"
+            >CHECK REGISTRATION STATUS</v-btn
+          >
         </div>
         <v-btn class="float-button back-button" icon @click="check = false">
           <v-icon>mdi-chevron-left</v-icon>
@@ -43,8 +41,10 @@
             <input
               type="text"
               id="output-nama"
+              style="color:black"
               class="output"
-              v-model="user.nama"
+              v-model="user.nama_lengkap"
+              disabled
             />
           </label>
         </div>
@@ -56,6 +56,7 @@
               id="output-nim"
               class="output"
               v-model="user.nim"
+              disabled
             />
           </label>
         </div>
@@ -67,9 +68,11 @@
               id="output-divisi"
               class="output"
               v-model="user.divisi"
+              disabled
             />
           </label>
         </div>
+        <span id="coba"></span>
         <v-btn
           class="float-button back-button"
           icon
@@ -94,12 +97,9 @@ export default {
       dialog: false,
       check: false,
       nimInput: "",
-      user: {
-        nim: "0123456789",
-        nama: "Muhammad Rayhan Hakim",
-        divisi: "Front-End"
-      },
-      result: false
+      user: null,
+      result: false,
+      loading: false
     };
   },
   methods: {
@@ -107,12 +107,25 @@ export default {
       this.dialog = false;
       this.check = false;
       this.result = false;
+      this.user = null;
     },
     checkStatus() {
-      if (this.nimInput === this.user.nim) {
-        this.check = false;
-        this.result = true;
-      }
+      this.loading = true;
+      this.$store
+        .dispatch("recruitment/getDetailNim", this.nimInput)
+        .then(data => {
+          this.loading = false;
+          if (data.status === "success") {
+            this.user = data.data;
+            this.check = false;
+            this.result = true;
+          } else {
+            document.getElementById("input-nim").style.border = "2px red solid";
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

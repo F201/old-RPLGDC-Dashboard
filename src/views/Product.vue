@@ -4,13 +4,15 @@
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
           <div class="d-flex flex-wrap justify-center">
-            <div
-              v-for="productCard in productList"
-              :key="productCard.id"
-              class="mx-lg-12"
-            >
-              <ProductCards :productCard="productCard" />
-            </div>
+            <template v-if="productList != null">
+              <div
+                v-for="productCard in productList"
+                :key="productCard.id_products"
+                class="mx-lg-12"
+              >
+                <ProductCards :productCard="productCard" />
+              </div>
+            </template>
           </div>
           <div class="d-flex mt-6">
             <v-btn depressed class="mx-auto white--text" to="/product-details">
@@ -34,63 +36,19 @@ export default {
   },
   data() {
     return {
-      productList: [
-        {
-          id: 1,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 2,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 3,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 4,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 5,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 6,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 7,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 8,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        },
-        {
-          id: 9,
-          name: "KATSIR",
-          image: require("@/assets/product/product_mobile.png"),
-          division: "MOBILE"
-        }
-      ]
+      productList: null
     };
+  },
+  created() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/products")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.productList = data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>

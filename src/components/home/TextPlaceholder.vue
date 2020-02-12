@@ -1,7 +1,7 @@
 <template>
   <div class="textplaceholder d-flex flex-column align-center">
     <div class="textplaceholder--header">{{ header }}</div>
-    <p class="textplaceholder--content">{{ content }}</p>
+    <p class="textplaceholder--content" v-html="content"></p>
   </div>
 </template>
 

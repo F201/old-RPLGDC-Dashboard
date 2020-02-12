@@ -79,43 +79,44 @@ export default {
   },
   data() {
     return {
-      contents: [
-        {
-          title: "Katsir 1",
-          category: "Mobile",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          img: require("@/assets/product/product_mobile.png")
-        },
-        {
-          title: "Katsir 2",
-          category: "PC",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          img: require("@/assets/product/product_mobile.png")
-        },
-        {
-          title: "Katsir 3",
-          category: "Mobile",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          img: require("@/assets/product/product_mobile.png")
-        },
-        {
-          title: "Katsir 4",
-          category: "PC",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          img: require("@/assets/product/product_mobile.png")
-        },
-        {
-          title: "Katsir 5",
-          category: "Mobile",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          img: require("@/assets/product/product_mobile.png")
-        }
-      ]
+      contents: null
+      // [
+      //   {
+      //     title: "Katsir 1",
+      //     category: "Mobile",
+      //     desc:
+      //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
+      //     img: require("@/assets/product/product_mobile.png")
+      //   },
+      //   {
+      //     title: "Katsir 2",
+      //     category: "PC",
+      //     desc:
+      //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
+      //     img: require("@/assets/product/product_mobile.png")
+      //   },
+      //   {
+      //     title: "Katsir 3",
+      //     category: "Mobile",
+      //     desc:
+      //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
+      //     img: require("@/assets/product/product_mobile.png")
+      //   },
+      //   {
+      //     title: "Katsir 4",
+      //     category: "PC",
+      //     desc:
+      //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
+      //     img: require("@/assets/product/product_mobile.png")
+      //   },
+      //   {
+      //     title: "Katsir 5",
+      //     category: "Mobile",
+      //     desc:
+      //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
+      //     img: require("@/assets/product/product_mobile.png")
+      //   }
+      // ]
     };
   },
   methods: {
@@ -147,11 +148,22 @@ export default {
       prodDesc.innerHTML = this.contents[index].desc;
     }
   },
-  mounted() {
+  beforeUpdate() {
     this.$nextTick(() => {
       this.button(0);
       this.changeContent(0);
     });
+  },
+  beforeCreate() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/detail_products")
+      .then(res => res.json())
+      .then(data => {
+        this.contents = data.data;
+        console.log(this.contents);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>

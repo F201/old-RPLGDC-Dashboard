@@ -1,6 +1,16 @@
 <template>
-  <v-carousel class="mx-auto" :continuous="false" hide-delimiters>
-    <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
+  <v-carousel
+    class="mx-auto"
+    :continuous="false"
+    hide-delimiters
+    v-if="items != null"
+  >
+    <v-carousel-item
+      v-for="(item, i) in items"
+      :key="i"
+      :src="item.gambar_activities"
+      :alt="item.nama_activities"
+    >
       <div class="overlay-content__container d-flex flex-wrap">
         <div class="px-2">
           <v-img
@@ -27,21 +37,48 @@
 export default {
   data() {
     return {
-      items: [
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
-        }
-      ]
+      items: null
+      // [
+      //   {
+      //     src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"
+      //   },
+      //   {
+      //     src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+      //   },
+      //   {
+      //     src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
+      //   },
+      //   {
+      //     src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
+      //   }
+      // ]
     };
+  },
+  methods: {
+    buttonColor() {
+      let buttons = document.querySelectorAll(".v-window__container .v-btn");
+      for (let j = 0; j < buttons.length; j++) {
+        buttons[j].style.backgroundColor = "#F0793C";
+        buttons[j].onclick = () => {
+          this.buttonColor();
+        };
+      }
+    }
+  },
+  beforeUpdate() {
+    this.$nextTick(() => {
+      this.buttonColor();
+    });
+  },
+  beforeCreate() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/activities")
+      .then(res => res.json())
+      .then(data => {
+        this.items = data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>

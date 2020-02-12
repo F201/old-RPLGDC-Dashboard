@@ -6,30 +6,34 @@
         <v-btn icon @click="overlay = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-card-title class="justify-center pb-8 pt-md-8 pt-12"
-          >MOBILE DIVISION ACTIVITY</v-card-title
-        >
+        <v-card-title class="justify-center pb-8 pt-md-8 pt-12">
+          <span class="text-uppercase">
+            {{ divisionName }} DIVISION ACTIVITY
+          </span>
+        </v-card-title>
         <div class="content-wrapper mx-sm-12">
           <div
             class="content-container d-flex flex-md-nowrap flex-wrap justify-center"
+            v-for="(activity, index) in activities"
+            :key="index"
           >
+            <!-- src="../../assets/division/activity/activity.png" -->
             <v-img
-              src="../../assets/division/activity/activity.png"
+              :src="activity.gambar_activities"
               max-width="350px"
               max-height="199px"
               contain
             ></v-img>
             <div class="content-text mx-4 mt-3 mt-sm-0">
-              <p class="content-text__title">STUDY GROUP</p>
+              <p class="content-text__title text-uppercase">
+                {{ activity.nama_activities }}
+              </p>
               <p class="content-text__desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-                cum unde ipsum, accusamus culpa provident blanditiis ullam
-                voluptate molestias nisi nesciunt perspiciatis harum
-                praesentium! Modi at ex accusantium atque numquam.
+                {{ activity.deskripsi }}
               </p>
             </div>
           </div>
-          <div
+          <!-- <div
             class="content-container d-flex mt-4 flex-md-nowrap flex-wrap justify-center"
           >
             <v-img
@@ -47,7 +51,7 @@
                 praesentium! Modi at ex accusantium atque numquam.
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
         <v-card-title class="justify-center pt-8 pb-6"
           >TOOL AND FRAMEWORK</v-card-title
@@ -55,51 +59,6 @@
         <div
           class="content-wrapper mx-sm-12 mx-3 pb-8 d-flex justify-space-around flex-wrap"
         >
-          <div class="content-container d-flex flex-column align-center">
-            <v-img
-              src="../../assets/division/activity/icon/React.png"
-              max-width="84.5px"
-              max-height="84.5px"
-              contain
-            ></v-img>
-            <div class="tool-text">React Native</div>
-          </div>
-          <div class="content-container d-flex flex-column align-center">
-            <v-img
-              src="../../assets/division/activity/icon/React.png"
-              max-width="84.5px"
-              max-height="84.5px"
-              contain
-            ></v-img>
-            <div class="tool-text">React Native</div>
-          </div>
-          <div class="content-container d-flex flex-column align-center">
-            <v-img
-              src="../../assets/division/activity/icon/React.png"
-              max-width="84.5px"
-              max-height="84.5px"
-              contain
-            ></v-img>
-            <div class="tool-text">React Native</div>
-          </div>
-          <div class="content-container d-flex flex-column align-center">
-            <v-img
-              src="../../assets/division/activity/icon/React.png"
-              max-width="84.5px"
-              max-height="84.5px"
-              contain
-            ></v-img>
-            <div class="tool-text">React Native</div>
-          </div>
-          <div class="content-container d-flex flex-column align-center">
-            <v-img
-              src="../../assets/division/activity/icon/React.png"
-              max-width="84.5px"
-              max-height="84.5px"
-              contain
-            ></v-img>
-            <div class="tool-text">React Native</div>
-          </div>
           <div class="content-container d-flex flex-column align-center">
             <v-img
               src="../../assets/division/activity/icon/React.png"
@@ -157,17 +116,32 @@
     font-size: 15px
 </style>
 
+<style scoped>
+.v-responsive.v-image {
+  order: 0;
+}
+.content-container:nth-child(even) .v-responsive.v-image {
+  order: 1;
+}
+</style>
+
 <script>
 export default {
   name: "DivisionOverlay",
   data() {
     return {
-      overlay: false
+      overlay: false,
+      activities: null,
+      divisionName: null,
+      tools: null
     };
   },
   mounted: function() {
-    this.$root.$on("toggle", bool => {
+    this.$root.$on("toggle", (bool, name, activities, tools) => {
       this.overlay = bool;
+      this.divisionName = name;
+      this.activities = activities;
+      this.tools = tools;
     });
   }
 };

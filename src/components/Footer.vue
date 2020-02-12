@@ -11,18 +11,21 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
         purus sit amet luctus venenatis, lectus
       </div>
+      <br />
       <RecruitmentPrompt />
     </div>
     <div class="footer__bottom">
       <div class="footer__bottom--title">FOR MORE INFORMATION</div>
-      <div class="contacts">
-        <v-btn href="https://www.instagram.com/rplgdc_/" icon>
-          <v-icon>mdi-instagram</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>fab fa-line</v-icon>
-        </v-btn>
-      </div>
+      <template v-if="instagram != null && line != null">
+        <div class="contacts">
+          <v-btn :href="instagram.value" icon>
+            <v-icon>mdi-instagram</v-icon>
+          </v-btn>
+          <v-btn :href="`http://line.me/ti/p/~${line.value}`" icon>
+            <v-icon>fab fa-line</v-icon>
+          </v-btn>
+        </div>
+      </template>
       <div>&copy; 2019 RPLGDC Laboratory, All Right Reserved</div>
     </div>
   </footer>
@@ -35,6 +38,23 @@ export default {
   name: "Footer",
   components: {
     RecruitmentPrompt
+  },
+  data() {
+    return {
+      instagram: null,
+      line: null
+    };
+  },
+  beforeCreate() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/socials")
+      .then(res => res.json())
+      .then(data => {
+        this.instagram = data.data[0];
+        this.line = data.data[1];
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
   mounted() {
     const footer = document.getElementsByTagName("footer")[0];

@@ -357,7 +357,9 @@
                   <v-btn class="prev-button" depressed text @click="prevStep()"
                     >PREV</v-btn
                   >
-                  <v-btn depressed text :loading="loading" @click="submit()">FINISH</v-btn>
+                  <v-btn depressed text :loading="loading" @click="submit()"
+                    >FINISH</v-btn
+                  >
                 </div>
               </div>
             </v-stepper-content>
@@ -573,12 +575,19 @@ export default {
       fileData.append("cv", this.fileCv);
       fileData.append("motivation_letter", this.motivation);
       fileData.append("portofolio", this.portfolio);
-      this.$store.dispatch("recruitment/postRecruitment", fileData).then(res => {
-        if (res.status === 200) this.$swal('Success', 'Berhasil melakukan registrasi!', 'success').then(() => {
-          this.$router.push('/')
+      this.$store
+        .dispatch("recruitment/postRecruitment", fileData)
+        .then(res => {
+          if (res.status === 200)
+            this.$swal(
+              "Success",
+              "Berhasil melakukan registrasi!",
+              "success"
+            ).then(() => {
+              this.$router.push("/");
+            });
+          else this.$swal("Error", "Error registrasi!", "error");
         });
-        else this.$swal('Error', 'Error registrasi!', 'error')
-      });
     }
   },
 

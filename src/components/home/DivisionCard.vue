@@ -4,6 +4,7 @@
     elevation="5"
     class="pa-10 text-center white mx-auto"
     tile
+    v-if="divisions != null"
   >
     <div class="icon-wrapper d-flex justify-space-around flex-wrap">
       <div
@@ -11,9 +12,14 @@
         v-for="(division, index) in divisions"
         :key="index"
       >
-        <v-img :src="`${division.icon}`" width="160px" height="160px"></v-img>
+        <v-img
+          :src="division.gambar_divisi"
+          width="160px"
+          height="160px"
+          eager
+        ></v-img>
         <v-card-title class="justify-center text-uppercase">{{
-          division.name
+          division.nama_divisi
         }}</v-card-title>
       </div>
     </div>
@@ -30,25 +36,40 @@ export default {
   name: "divisioncard",
   data() {
     return {
-      divisions: [
-        {
-          icon: require("@/assets/mobile.png"),
-          name: "MOBILE"
-        },
-        {
-          icon: require("@/assets/web.png"),
-          name: "WEB"
-        },
-        {
-          icon: require("@/assets/game.png"),
-          name: "GAME"
-        },
-        {
-          icon: require("@/assets/uiux.png"),
-          name: "UI/UX"
-        }
-      ]
+      divisions: null
+      // [
+      //   {
+      //     icon: require("@/assets/mobile.png"),
+      //     name: "MOBILE"
+      //   },
+      //   {
+      //     icon: require("@/assets/web.png"),
+      //     name: "FRONT-END"
+      //   },
+      //   {
+      //     icon: require("@/assets/web.png"),
+      //     name: "BACK-END"
+      //   },
+      //   {
+      //     icon: require("@/assets/game.png"),
+      //     name: "GAME"
+      //   },
+      //   {
+      //     icon: require("@/assets/uiux.png"),
+      //     name: "UI/UX"
+      //   }
+      // ]
     };
+  },
+  beforeCreate() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/divisions")
+      .then(res => res.json())
+      .then(data => {
+        this.divisions = data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>

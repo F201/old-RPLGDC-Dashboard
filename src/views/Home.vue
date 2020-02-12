@@ -24,7 +24,7 @@
               :key="index"
             >
               <v-img
-                :src="`${detail.image}`"
+                :src="detail.image"
                 width="503px"
                 height="503px"
                 contain
@@ -124,19 +124,19 @@ export default {
         {
           header: "OUR VISION",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis",
+            "1. Menciptakan atmosfir dan lingkungan Laboratorium RPLGDC yang lebih friendly towards all others dan lebih hidup dengan anggota Lab yang aktif mengunjungi Lab <br /> 2. Menciptakan program kerja Lab RPLGDC yang berkualitas serta bekerjasama dengan berbagai Laboratorium IF lainnya <br /> 3. Ekspansi influens dan daya tarik Lab RPLGDC kepada jurusan selain S1 Informatika (seperti kepada jurusan di FIK, D3 RPL, D3 Multimedia, Sistem Informasi, Teknik Industri) <br /> 4. Memberikan output SDM Laboratorium RPLGDC yang berkualitas dan memiliki daya tarik tersendiri untuk kedepannya didepan khalayak ramai",
           image: require("@/assets/home/rocket.png")
         },
         {
           header: "OUR MISSION",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis",
+            "1. Menciptakan suasana Laboratorium yang bersih, rapih, dan tertata dengan baik <br /> 2. Memberikan program kerja yang berkualitas dengan usaha yang semaksimal mungkin demi output yang positif <br /> 3. Melakukan kerjasama antar laboratorium maupun antar jurusan yang memiliki interest kepada bidang software development <br /> 4. Memberikan proyekan, materi - materi yang sesuai, serta implementasi brainspark ataupun workshop yang dapat menstimulasi pola berfikir dan bekerja seorang mahasiswa baik internship maupun anggota lab RPLGDC <br /> 5. Mengajak seluruh anggota/aslab RPLGDC untuk bergotong royong dan saling membantu satu dengan lainnya pada tiap acara/program kerja Laboratorium",
           image: require("@/assets/home/planets.png")
         },
         {
           header: "MEMBER BENEFIT",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis",
+            "1. Mendapatkan ilmu yang bermanfaat <br /> 2. Dapat bertemu dengan wajah - wajah baru yang memiliki ide cemerlang <br /> 3. Sharing ilmu pengetahuan yang ada dengan orang lain <br /> 4. Dapat mengimplementasikan skill dan ilmu yang ada pada proyekan yang didapatkan <br /> 5. Memiliki wadah untuk mengaplikasikan skill Software Development dan Game Development <br /> 6. Memiliki wadah yang berfokus pada research group mengenai Software Development maupun Game Development",
           image: require("@/assets/home/astronaut.png")
         }
       ],

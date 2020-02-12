@@ -1,9 +1,9 @@
-import api from '../api/api';
+import api from "../api/api";
 
 export default {
   namespaced: true,
   state: {
-    loading: false,
+    loading: false
   },
   mutations: {
     LOADING(state) {
@@ -15,22 +15,36 @@ export default {
   },
   actions: {
     postRecruitment({ commit }, data) {
-      commit('LOADING');
+      commit("LOADING");
       return api.recruitment
         .postRecruitment(data)
-        .then((tes) => {
-          console.log(tes)
-          commit('LOADED');
+        .then(tes => {
+          console.log(tes);
+          commit("LOADED");
           return tes;
         })
         .catch(err => {
-          commit('LOADED');
-          console.log(err)
+          commit("LOADED");
+          console.log(err);
+          // return err.response.data;
+        });
+    },
+    getDetailNim({ commit }, data) {
+      commit("LOADING");
+      return api.recruitment
+        .getDetailNim(data)
+        .then(({ data }) => {
+          commit("LOADED");
+          return data;
+        })
+        .catch(err => {
+          commit("LOADED");
+          console.log(err);
           // return err.response.data;
         });
     }
   },
   getters: {
-    loading: state => state.loading,
+    loading: state => state.loading
   }
 };

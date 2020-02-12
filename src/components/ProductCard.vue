@@ -1,12 +1,12 @@
 <template>
   <v-card class="my-8 ma-3 flat text-xs-center" max-width="315">
-    <v-img :src="`${productCard.image}`" height="315"></v-img>
+    <v-img :src="productCard.gambar_products" height="315"></v-img>
     <v-card-title>
-      {{ productCard.name }}
+      {{ productCard.nama_products }}
     </v-card-title>
     <v-card-text>
       <v-btn depressed small1 class="mx-auto white--text">
-        {{ productCard.division }}
+        {{ productCard.kategori_products }}
       </v-btn>
     </v-card-text>
   </v-card>
@@ -25,6 +25,7 @@ export default {
 .v-card
   font-family: $raleway
   border-radius: 25px
+  min-width: 315px
 
 .v-btn
   background: $orange-gradient

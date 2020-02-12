@@ -11,18 +11,25 @@
             tile
           >
             <div class="v-card__content--wrapper">
-              <v-card-title>{{ division.title }}</v-card-title>
-              <v-card-text>{{ division.text }}</v-card-text>
+              <v-card-title class="text-uppercase">{{
+                division.nama_divisi
+              }}</v-card-title>
+              <v-card-text>{{ division.deskripsi }}</v-card-text>
               <v-card-actions>
-                <v-btn depressed class="white--text" @click="toggleOverlay()">
+                <v-btn
+                  depressed
+                  class="white--text"
+                  @click="toggleOverlay(division.id_divisi)"
+                >
                   SEE DETAIL
                 </v-btn>
               </v-card-actions>
             </div>
             <v-img
-              :src="`${division.icon}`"
+              :src="`${division.gambar_divisi}`"
               width="333px"
               min-height="333px"
+              eager
             ></v-img>
           </v-card>
         </v-col>
@@ -82,38 +89,36 @@ export default {
   },
   data() {
     return {
-      divisions: [
-        {
-          title: "MOBILE",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          icon: require("@/assets/mobile.png")
-        },
-        {
-          title: "WEB",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          icon: require("@/assets/web.png")
-        },
-        {
-          title: "GAME",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          icon: require("@/assets/game.png")
-        },
-        {
-          title: "UI/UX",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis,",
-          icon: require("@/assets/uiux.png")
-        }
-      ]
+      divisions: null
     };
   },
   methods: {
-    toggleOverlay: function() {
-      this.$root.$emit("toggle", true);
+    toggleOverlay(id) {
+      fetch("https://rplgdc-dashboard.herokuapp.com/detail_divisions/" + id)
+        .then(res => res.json())
+        .then(data => {
+          this.$root.$emit(
+            "toggle",
+            true,
+            data.division[0].nama_divisi,
+            data.division[0].activities,
+            data.division[0].tools
+          );
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
+  },
+  created() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/divisions/")
+      .then(res => res.json())
+      .then(data => {
+        this.divisions = data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>

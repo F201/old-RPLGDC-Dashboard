@@ -1,5 +1,11 @@
 <template>
-  <v-carousel height="auto" :continuous="false" class="mx-auto" hide-delimiters>
+  <v-carousel
+    height="auto"
+    :continuous="false"
+    class="mx-auto"
+    hide-delimiters
+    v-if="members != null"
+  >
     <v-carousel-item
       v-for="(member, index) in members.slice(
         0,
@@ -21,10 +27,17 @@
             )"
             :key="index"
           >
-            <div class="carousel__content--img"></div>
-            <div class="carousel__content--name">{{ member.name }}</div>
+            <v-img
+              class="carousel__content--img"
+              :src="member.foto_org_structures"
+              contain
+              eager
+            ></v-img>
+            <div class="carousel__content--name">
+              {{ member.nama_org_structures }}
+            </div>
             <div class="carousel__content--position">
-              {{ member.position }}
+              {{ member.posisi_org_structures }}
             </div>
           </div>
         </v-row>
@@ -37,32 +50,7 @@
 export default {
   data() {
     return {
-      members: [
-        {
-          name: "Jonathan",
-          position: "Member 1"
-        },
-        {
-          name: "Jonathan",
-          position: "Member 2"
-        },
-        {
-          name: "Jonathan",
-          position: "Member 3"
-        },
-        {
-          name: "Jonathan",
-          position: "Member 4"
-        },
-        {
-          name: "Jonathan",
-          position: "Member 5"
-        },
-        {
-          name: "Jonathan",
-          position: "Member 6"
-        }
-      ]
+      members: null
     };
   },
   methods: {
@@ -76,6 +64,16 @@ export default {
     startIndex(index) {
       return index * 3;
     }
+  },
+  beforeCreate() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/organizations")
+      .then(res => res.json())
+      .then(data => {
+        this.members = data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
