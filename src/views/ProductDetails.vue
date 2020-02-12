@@ -38,14 +38,14 @@
               <div
                 class="product__details--tools d-flex flex-wrap align-center"
               >
-                <div class="mx-3">
+                <div class="mx-3" v-for="(tool, index) in tools" :key="index">
                   <v-img
-                    src="../assets/division/activity/icon/React.png"
+                    :src="tool.gambar_tools"
                     max-width="84.5px"
                     max-height="84.5px"
                     contain
                   ></v-img>
-                  <div class="tool-text">React Native</div>
+                  <div class="tool-text text-center">{{ tool.nama_tools }}</div>
                 </div>
               </div>
             </div>
@@ -123,7 +123,6 @@ export default {
           this.button(
             index < this.contents.length - 1 ? (index += 1) : (index = 0)
           );
-          console.log(index);
           this.changeContent(index);
         };
       }
@@ -150,6 +149,7 @@ export default {
         this.desc = this.contents[0].deskripsi;
         this.category = this.contents[0].kategori_products;
         this.img = this.contents[0].gambar_products;
+        this.tools = this.contents[0].tools;
       });
   }
 };

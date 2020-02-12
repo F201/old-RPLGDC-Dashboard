@@ -7,13 +7,14 @@
             :src="achievement.foto_achievement"
             :eager="true"
             max-width="537px"
+            max-height="342px"
             class="align-self-start"
             contain
           ></v-img>
           <div class="carousel__content--container mb-4 ml-sm-6">
             <div class="carousel__content">
               <div class="carousel__content--name text-uppercase">
-                {{ achievement.judul }}
+                {{ achievement.peringkat }} {{ achievement.judul }}
               </div>
               <div class="carousel__content--year">{{ achievement.tahun }}</div>
               <!-- <div class="carousel__content--product mt-8 d-flex align-center">
@@ -21,7 +22,7 @@
                   mdi-package-variant
                 </v-icon>
                 <div class="product__title">Produk atau judul pemenang</div>
-              </div>
+              </div> -->
               <div class="carousel__content--team d-flex mt-3">
                 <v-icon
                   size="24px"
@@ -29,10 +30,10 @@
                   class="mr-2 mt-3 pa-2 align-self-start"
                   light
                   >mdi-account-group</v-icon
-                > -->
-              <!-- <v-list light>
+                >
+                <v-list light>
                   <v-list-item
-                    v-for="(team, index) in achievement.teams"
+                    v-for="(member, index) in achievement.members"
                     :key="index"
                     class="pa-0"
                     two-line
@@ -43,14 +44,16 @@
                       >&bull;</span
                     >
                     <v-list-item-content>
-                      <v-list-item-title>{{ team.name }}</v-list-item-title>
+                      <v-list-item-title>
+                        {{ member.nama_member }}
+                      </v-list-item-title>
                       <v-list-item-subtitle>
-                        {{ team.major }}
+                        {{ member.jurusan }} / {{ member.angkatan }}
                       </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
-                </v-list> -->
-              <!-- </div> -->
+                </v-list>
+              </div>
             </div>
           </div>
         </v-row>
@@ -118,11 +121,10 @@ export default {
     });
   },
   beforeCreate() {
-    fetch("https://rplgdc-dashboard.herokuapp.com/achievements")
+    fetch("https://rplgdc-dashboard.herokuapp.com/detail_achievement")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        this.achievements = data.data;
+        this.achievements = data.achievement;
       });
   }
 };
