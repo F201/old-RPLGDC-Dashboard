@@ -3,13 +3,13 @@
     <v-container class="px-sm-6">
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
-          <div id="top" class="section-news">
+          <!-- <div id="top" class="section-news">
             <TextPlaceholder
               :header="sectionNews.header"
               :content="sectionNews.content"
             />
             <NewsCarousel class="mt-6" />
-          </div>
+          </div> -->
           <div class="section-division">
             <TextPlaceholder
               :header="sectionDivision.header"
@@ -99,7 +99,7 @@ import DivisionCard from "@/components/home/DivisionCard";
 import TeamCarousel from "@/components/home/TeamCarousel";
 import AchievementCarousel from "@/components/home/AchievementCarousel";
 import ActivityCarousel from "@/components/home/ActivityCarousel";
-import NewsCarousel from "@/components/home/NewsCarousel";
+// import NewsCarousel from "@/components/home/NewsCarousel";
 import Footer from "@/components/Footer";
 
 export default {
@@ -110,7 +110,7 @@ export default {
     TeamCarousel,
     AchievementCarousel,
     ActivityCarousel,
-    NewsCarousel,
+    // NewsCarousel,
     Footer
   },
   data() {
@@ -154,12 +154,12 @@ export default {
         header: "OUR LATEST ACTIVITY",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
-      },
-      sectionNews: {
-        header: "OUR LATEST NEWS",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
       }
+      // sectionNews: {
+      //   header: "OUR LATEST NEWS",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
+      // }
     };
   },
   methods: {

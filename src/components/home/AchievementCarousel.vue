@@ -4,7 +4,7 @@
       <div class="carousel__bg pa-6 pt-0 pb-12 pt-sm-6 white">
         <v-row class="fill-height d-flex flex-wrap" justify="center">
           <v-img
-            :src="`${achievement.img}`"
+            :src="achievement.foto_achievement"
             :eager="true"
             max-width="537px"
             class="align-self-start"
@@ -13,10 +13,10 @@
           <div class="carousel__content--container mb-4 ml-sm-6">
             <div class="carousel__content">
               <div class="carousel__content--name text-uppercase">
-                {{ achievement.name }}
+                {{ achievement.judul }}
               </div>
-              <div class="carousel__content--year">{{ achievement.year }}</div>
-              <div class="carousel__content--product mt-8 d-flex align-center">
+              <div class="carousel__content--year">{{ achievement.tahun }}</div>
+              <!-- <div class="carousel__content--product mt-8 d-flex align-center">
                 <v-icon size="24px" color="white" class="mr-2 pa-2">
                   mdi-package-variant
                 </v-icon>
@@ -29,8 +29,8 @@
                   class="mr-2 mt-3 pa-2 align-self-start"
                   light
                   >mdi-account-group</v-icon
-                >
-                <v-list light>
+                > -->
+              <!-- <v-list light>
                   <v-list-item
                     v-for="(team, index) in achievement.teams"
                     :key="index"
@@ -49,8 +49,8 @@
                       </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
-                </v-list>
-              </div>
+                </v-list> -->
+              <!-- </div> -->
             </div>
           </div>
         </v-row>
@@ -63,42 +63,67 @@
 export default {
   data() {
     return {
-      achievements: [
-        {
-          name: "juara 1 lorem ipsum",
-          year: "2020",
-          product: "Produk atau judul pemenang",
-          img: require("@/assets/achievement/foto.png"),
-          teams: [
-            { name: "Anggota tim pemenang", major: "jurusan" },
-            { name: "Anggota tim pemenang", major: "jurusan" },
-            { name: "Anggota tim pemenang", major: "jurusan" }
-          ]
-        },
-        {
-          name: "juara 1 lorem ipsum",
-          year: "2020",
-          product: "Produk atau judul pemenang",
-          img: require("@/assets/achievement/foto.png"),
-          teams: [
-            { name: "Anggota tim pemenang", major: "jurusan" },
-            { name: "Anggota tim pemenang", major: "jurusan" },
-            { name: "Anggota tim pemenang", major: "jurusan" }
-          ]
-        },
-        {
-          name: "juara 1 lorem ipsum",
-          year: "2020",
-          product: "Produk atau judul pemenang",
-          img: require("@/assets/achievement/foto.png"),
-          teams: [
-            { name: "Anggota tim pemenang", major: "jurusan" },
-            { name: "Anggota tim pemenang", major: "jurusan" },
-            { name: "Anggota tim pemenang", major: "jurusan" }
-          ]
-        }
-      ]
+      achievements: null
+      // [
+      //   {
+      //     name: "juara 1 lorem ipsum",
+      //     year: "2020",
+      //     product: "Produk atau judul pemenang",
+      //     img: require("@/assets/achievement/foto.png"),
+      //     teams: [
+      //       { name: "Anggota tim pemenang", major: "jurusan" },
+      //       { name: "Anggota tim pemenang", major: "jurusan" },
+      //       { name: "Anggota tim pemenang", major: "jurusan" }
+      //     ]
+      //   },
+      //   {
+      //     name: "juara 1 lorem ipsum",
+      //     year: "2020",
+      //     product: "Produk atau judul pemenang",
+      //     img: require("@/assets/achievement/foto.png"),
+      //     teams: [
+      //       { name: "Anggota tim pemenang", major: "jurusan" },
+      //       { name: "Anggota tim pemenang", major: "jurusan" },
+      //       { name: "Anggota tim pemenang", major: "jurusan" }
+      //     ]
+      //   },
+      //   {
+      //     name: "juara 1 lorem ipsum",
+      //     year: "2020",
+      //     product: "Produk atau judul pemenang",
+      //     img: require("@/assets/achievement/foto.png"),
+      //     teams: [
+      //       { name: "Anggota tim pemenang", major: "jurusan" },
+      //       { name: "Anggota tim pemenang", major: "jurusan" },
+      //       { name: "Anggota tim pemenang", major: "jurusan" }
+      //     ]
+      //   }
+      // ]
     };
+  },
+  methods: {
+    buttonColor() {
+      let buttons = document.querySelectorAll(".v-window__container .v-btn");
+      for (let j = 0; j < buttons.length; j++) {
+        buttons[j].style.backgroundColor = "#F0793C";
+        buttons[j].onclick = () => {
+          this.buttonColor();
+        };
+      }
+    }
+  },
+  beforeUpdate() {
+    this.$nextTick(() => {
+      this.buttonColor();
+    });
+  },
+  beforeCreate() {
+    fetch("https://rplgdc-dashboard.herokuapp.com/achievements")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.achievements = data.data;
+      });
   }
 };
 </script>

@@ -101,6 +101,7 @@ export default {
   position: relative
   height: 125vh
   overflow: hidden
+  background-color: $orange-color
 
   .jumbotron__content
     text-align: center
