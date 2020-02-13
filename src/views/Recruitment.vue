@@ -431,7 +431,7 @@ export default {
         },
         {
           name: "Game Programming",
-          value: "game",
+          value: "gdc",
           icon: require("@/assets/game.png")
         },
         {
