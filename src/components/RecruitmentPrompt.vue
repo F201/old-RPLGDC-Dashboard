@@ -115,19 +115,24 @@ export default {
       this.user = null;
     },
     checkStatus() {
-      this.loading = true;
-      this.$store
-        .dispatch("recruitment/getDetailNim", this.nimInput)
-        .then(data => {
-          this.loading = false;
-          if (data.status === "success") {
-            this.user = data.data;
-            this.check = false;
-            this.result = true;
-          } else {
-            document.getElementById("input-nim").style.border = "2px red solid";
-          }
-        });
+      if (this.nimInput != "") {
+        this.loading = true;
+        this.$store
+          .dispatch("recruitment/getDetailNim", this.nimInput)
+          .then(data => {
+            this.loading = false;
+            if (data.status === "success") {
+              this.user = data.data;
+              this.check = false;
+              this.result = true;
+            } else {
+              document.getElementById("input-nim").style.border =
+                "2px red solid";
+            }
+          });
+      } else {
+        document.getElementById("input-nim").style.border = "2px red solid";
+      }
     }
   }
 };
