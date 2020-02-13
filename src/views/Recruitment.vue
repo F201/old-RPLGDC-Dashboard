@@ -57,11 +57,11 @@
                   </div>
                 </div>
                 <div>
-                  <label for="name">Nama Lengkap</label>
+                  <label for="name">Full Name</label>
                 </div>
                 <input type="text" name="name" id="name" v-model="name" />
                 <div class="mt-3">
-                  <label for="nim">NIM</label>
+                  <label for="nim">Student ID Number</label>
                 </div>
                 <input type="text" name="nim" id="nim" v-model="nim" />
                 <div
@@ -69,7 +69,7 @@
                 >
                   <div class="input__container--birthdate">
                     <div>
-                      <label for="birthdate">Tanggal Lahir</label>
+                      <label for="birthdate">Birth Date</label>
                     </div>
                     <input
                       type="date"
@@ -80,7 +80,7 @@
                   </div>
                   <div class="input__container--gender">
                     <div>
-                      <label>Jenis Kelamin</label>
+                      <label>Gender</label>
                     </div>
                     <div class="input__container--radio d-sm-flex">
                       <label
@@ -104,7 +104,7 @@
                   </div>
                 </div>
                 <div class="mt-2">
-                  <label for="major">Jurusan</label>
+                  <label for="major">Major</label>
                 </div>
                 <v-select
                   id="major"
@@ -118,7 +118,7 @@
                   item-color="#F0793C"
                 ></v-select>
                 <div>
-                  <label>Angkatan</label>
+                  <label>Generation</label>
                 </div>
                 <div
                   class="angkatan__container d-flex flex-sm-row flex-column justify-sm-space-between"
@@ -141,7 +141,7 @@
                   </label>
                 </div>
                 <div class="mt-3">
-                  <label>Divisi</label>
+                  <label>Division</label>
                 </div>
                 <div class="divisi__container">
                   <label
@@ -170,7 +170,7 @@
                   </label>
                 </div>
                 <div>
-                  <label for="file-cv">Upload CV</label>
+                  <label for="file-cv">CV Upload</label>
                 </div>
                 <input
                   type="file"
@@ -231,7 +231,7 @@
                   </div>
                 </div>
                 <div>
-                  <label for="output-name">Nama Lengkap</label>
+                  <label for="output-name">Full Name</label>
                 </div>
                 <input
                   type="text"
@@ -242,7 +242,7 @@
                   disabled
                 />
                 <div>
-                  <label for="output-nim">NIM</label>
+                  <label for="output-nim">Student ID Number</label>
                 </div>
                 <input
                   type="text"
@@ -257,7 +257,7 @@
                 >
                   <div class="input__container--birthdate">
                     <div>
-                      <label for="output-birthdate">Tanggal Lahir</label>
+                      <label for="output-birthdate">Birth Date</label>
                     </div>
                     <input
                       type="text"
@@ -270,7 +270,7 @@
                   </div>
                   <div class="input__container--gender">
                     <div>
-                      <label for="output-gender">Jenis Kelamin</label>
+                      <label for="output-gender">Gender</label>
                     </div>
                     <input
                       type="text"
@@ -287,7 +287,7 @@
                 >
                   <div class="input__container--major">
                     <div>
-                      <label for="output-major">Jurusan</label>
+                      <label for="output-major">Major</label>
                     </div>
                     <textarea
                       type="text"
@@ -300,7 +300,7 @@
                   </div>
                   <div class="input__container--year">
                     <div>
-                      <label for="output-year">Angkatan</label>
+                      <label for="output-year">Generation</label>
                     </div>
                     <input
                       type="text"
@@ -313,7 +313,7 @@
                   </div>
                 </div>
                 <div class="mt-4">
-                  <label for="output-divisi">Divisi</label>
+                  <label for="output-divisi">Division</label>
                 </div>
                 <input
                   type="text"
@@ -407,6 +407,42 @@
       </v-stepper>
     </div>
     <Footer />
+    <template>
+      <v-row justify="center">
+        <v-dialog v-model="alert" persistent max-width="290">
+          <!-- <template v-slot:activator="{ on }">
+            <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
+          </template> -->
+          <v-card>
+            <v-card-title class="headline">Attention</v-card-title>
+            <template v-if="pdfAlert == true">
+              <v-card-text
+                >Please only upload pdf file or a file with less than 1
+                MB</v-card-text
+              >
+            </template>
+            <template v-else>
+              <v-card-text
+                >Please only upload jpg / jpeg file or a file with less than 500
+                KB</v-card-text
+              >
+            </template>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <!-- <v-btn color="green darken-1" text @click="dialog = false"
+                >Disagree</v-btn
+              > -->
+              <v-btn
+                color="white--text"
+                text
+                @click="(alert = false), (pdfAlert = false)"
+                >OK</v-btn
+              >
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+    </template>
   </div>
 </template>
 
@@ -481,6 +517,8 @@ export default {
       ],
       steps: 1,
       dialog: false,
+      alert: false,
+      pdfAlert: false,
       name: "",
       nim: "",
       birthdate: "",
@@ -535,31 +573,59 @@ export default {
 
     getFileCv(e) {
       const file = e.target;
-      let filePath = file.files[0].name;
-      let allowedExtensions = /(\.pdf)$/i;
+      const fileSize = file.files[0].size;
+      const filePath = file.files[0].name;
+      const allowedExtensions = /(\.pdf)$/i;
       if (!allowedExtensions.exec(filePath)) {
-        alert("Please upload file with extensions .pdf only");
+        // alert("Please upload file with extensions .pdf only");
+        this.alert = true;
+        this.pdfAlert = true;
         file.value = "";
+        this.fileCv = null;
         this.cvName = "";
         return false;
       } else {
-        this.fileCv = file.files[0];
-        this.cvName = filePath;
+        if (Math.round(fileSize / 1024) >= 1024) {
+          // alert("Please upload file size less than 1 MB");
+          this.alert = true;
+          this.pdfAlert = true;
+          file.value = "";
+          this.fileCv = null;
+          this.cvName = "";
+          return false;
+        } else {
+          this.fileCv = file.files[0];
+          this.cvName = filePath;
+        }
       }
     },
 
     getFileMotivation(e) {
       const file = e.target;
-      let filePath = file.files[0].name;
-      let allowedExtensions = /(\.pdf)$/i;
+      const fileSize = file.files[0].size;
+      const filePath = file.files[0].name;
+      const allowedExtensions = /(\.pdf)$/i;
       if (!allowedExtensions.exec(filePath)) {
-        alert("Please upload file with extensions .pdf only");
+        // alert("Please upload file with extensions .pdf only");
         file.value = "";
+        this.alert = true;
+        this.pdfAlert = true;
+        this.motivation = null;
         this.motivationName = "";
         return false;
       } else {
-        this.motivation = file.files[0];
-        this.motivationName = filePath;
+        if (Math.round(fileSize / 1024) >= 1024) {
+          // alert("Please upload file size less than 1 MB");
+          file.value = "";
+          this.alert = true;
+          this.pdfAlert = true;
+          this.motivation = null;
+          this.motivationName = "";
+          return false;
+        } else {
+          this.motivation = file.files[0];
+          this.motivationName = filePath;
+        }
       }
     },
 
@@ -568,21 +634,36 @@ export default {
         "photo__container"
       );
       const file = e.target;
-      let filePath = file.files[0].name;
-      let allowedExtensions = /(\.jpg|\.jpeg)$/i;
+      const fileSize = file.files[0].size;
+      const filePath = file.files[0].name;
+      const allowedExtensions = /(\.jpg|\.jpeg)$/i;
       if (!allowedExtensions.exec(filePath)) {
-        alert("Please upload file with extensions .jpeg/.jpg only");
+        // alert("Please upload file with extensions .jpeg/.jpg only");
         file.value = "";
+        this.alert = true;
+        this.image = null;
         this.imagePreview = null;
         imageContainer[0].style.backgroundImage = "";
         return false;
       } else {
-        this.image = file.files[0];
-        this.imagePreview = URL.createObjectURL(file.files[0]);
-        for (let i = 0; i < imageContainer.length; i++) {
-          imageContainer[i].style.backgroundImage = `url(${this.imagePreview})`;
-          imageContainer[i].style.backgroundSize = "cover";
-          imageContainer[i].style.backgroundPosition = "center center";
+        if (Math.round(fileSize / 512) >= 512) {
+          // alert("Please upload file size less than 1 MB");
+          file.value = "";
+          this.alert = true;
+          this.image = null;
+          this.imagePreview = null;
+          imageContainer[0].style.backgroundImage = "";
+          return false;
+        } else {
+          this.image = file.files[0];
+          this.imagePreview = URL.createObjectURL(file.files[0]);
+          for (let i = 0; i < imageContainer.length; i++) {
+            imageContainer[
+              i
+            ].style.backgroundImage = `url(${this.imagePreview})`;
+            imageContainer[i].style.backgroundSize = "cover";
+            imageContainer[i].style.backgroundPosition = "center center";
+          }
         }
       }
     },

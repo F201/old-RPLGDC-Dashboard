@@ -7,10 +7,12 @@
     class="mt-sm-4 px-sm-6"
     :absolute="true"
   >
-    <img src="@/assets/icon.png" alt="icon.png" />
-    <v-toolbar-title>
-      <span class="mx-2 font-weight-bold white--text">RPL - GDC</span>
-    </v-toolbar-title>
+    <v-btn to="/" class="icon-link" depressed text color="transparent">
+      <img src="@/assets/icon.png" alt="icon.png" />
+      <v-toolbar-title>
+        <span class="mx-2 font-weight-bold white--text">RPL - GDC</span>
+      </v-toolbar-title>
+    </v-btn>
     <v-spacer></v-spacer>
     <span class="d-none d-md-flex">
       <router-link
@@ -105,6 +107,7 @@ export default {
 <style lang="sass" scoped>
 .v-toolbar
   font-family: $raleway
+
   @media only screen and (min-width: 1280px)
     margin: auto 3cm
 

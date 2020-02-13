@@ -16,16 +16,14 @@
     </div>
     <div class="footer__bottom">
       <div class="footer__bottom--title">FOR MORE INFORMATION</div>
-      <template v-if="instagram != null && line != null">
-        <div class="contacts">
-          <v-btn :href="instagram.value" icon>
-            <v-icon>mdi-instagram</v-icon>
-          </v-btn>
-          <v-btn :href="`http://line.me/ti/p/~${line.value}`" icon>
-            <v-icon>fab fa-line</v-icon>
-          </v-btn>
-        </div>
-      </template>
+      <div class="contacts">
+        <v-btn href="https://instagram.com/rplgdc_" icon>
+          <v-icon>mdi-instagram</v-icon>
+        </v-btn>
+        <v-btn href="http://line.me/ti/p/~%40ajh8699v" icon>
+          <v-icon>fab fa-line</v-icon>
+        </v-btn>
+      </div>
       <div class="copyright">
         &copy; 2019 RPLGDC Laboratory, All Right Reserved
       </div>
@@ -40,20 +38,6 @@ export default {
   name: "Footer",
   components: {
     RecruitmentPrompt
-  },
-  data() {
-    return {
-      instagram: null,
-      line: null
-    };
-  },
-  beforeCreate() {
-    fetch(process.env.VUE_APP_URL + "socials")
-      .then(res => res.json())
-      .then(data => {
-        this.instagram = data.data[0];
-        this.line = data.data[1];
-      });
   },
   mounted() {
     const footer = document.getElementsByTagName("footer")[0];
