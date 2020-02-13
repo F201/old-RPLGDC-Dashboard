@@ -67,6 +67,7 @@ footer.footer--register
   align-items: center
   justify-content: center
   text-align: center
+  // background-color: $orange-color
 
   .footer__content
     display: flex

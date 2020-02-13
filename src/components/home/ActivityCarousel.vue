@@ -100,6 +100,12 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.items = data.activities;
+        if (this.items.length > 5) {
+          this.items = this.items.slice(
+            this.items.length - 5,
+            this.items.length
+          );
+        }
       });
   }
 };
