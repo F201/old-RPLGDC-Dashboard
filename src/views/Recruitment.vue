@@ -467,8 +467,13 @@ export default {
           icon: require("@/assets/web.png")
         },
         {
+<<<<<<< HEAD
           name: "Game Developer",
           value: "game",
+=======
+          name: "Game Programming",
+          value: "gdc",
+>>>>>>> c6d8edfa52ec53add42d1965db47f1c702991092
           icon: require("@/assets/game.png")
         },
         {
