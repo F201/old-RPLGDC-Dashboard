@@ -6,10 +6,7 @@
     hide-delimiters
     v-if="members != null"
   >
-    <v-carousel-item
-      v-for="(chunk, index) in chunks"
-      :key="index"
-    >
+    <v-carousel-item v-for="(chunk, index) in chunks" :key="index">
       <div class="carousel__bg pa-6 pb-12 white">
         <v-row
           class="fill-height d-flex justify-space-around flex-column flex-sm-row"
