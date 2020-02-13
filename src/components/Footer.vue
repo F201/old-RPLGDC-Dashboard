@@ -7,7 +7,7 @@
   >
     <div class="footer__content" v-if="this.$route.path === '/'">
       <div class="footer__content--title">WHAT ARE YOU WAITING FOR?</div>
-      <div class="footer__content--desc">
+      <div class="footer__content--desc mb-3">
         “Be the change you want to see in the World.” - Mahatma Gandhi
       </div>
       <br />
