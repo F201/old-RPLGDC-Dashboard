@@ -136,7 +136,7 @@ export default {
         {
           header: "MEMBER BENEFIT",
           content:
-            ".Able to search and learn many new knowledges that previously remained unknown before <br /><br /> Meet new bright minds that have the same interest as you in software and/or game development <br /><br /> Able to share many knowledges towards other people, inside or outside laboratorium environment <br /><br /> Could implement all of the skills and knowledges that are available to development projects <br /><br /> Having a place to apply and implement software and/or game development skills <br /><br /> Having a place to better focus on research group that are always discussing about the latest topics going in software and/or game development world.",
+            "Able to search and learn many new knowledges that previously remained unknown before <br /><br /> Meet new bright minds that have the same interest as you in software and/or game development <br /><br /> Able to share many knowledges towards other people, inside or outside laboratorium environment <br /><br /> Could implement all of the skills and knowledges that are available to development projects <br /><br /> Having a place to apply and implement software and/or game development skills <br /><br /> Having a place to better focus on research group that are always discussing about the latest topics going in software and/or game development world.",
           image: require("@/assets/home/astronaut.png")
         }
       ]
