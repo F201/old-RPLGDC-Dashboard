@@ -8,8 +8,7 @@
     <div class="footer__content" v-if="this.$route.path === '/'">
       <div class="footer__content--title">WHAT ARE YOU WAITING FOR?</div>
       <div class="footer__content--desc">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-        purus sit amet luctus venenatis, lectus
+        “Be the change you want to see in the World.” - Mahatma Gandhi
       </div>
       <br />
       <RecruitmentPrompt />
