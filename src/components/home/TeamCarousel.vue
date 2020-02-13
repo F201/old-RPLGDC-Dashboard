@@ -25,8 +25,8 @@
               <v-img
                 class="carousel__content--img"
                 :src="member.foto_org_structures"
-                contain
                 eager
+                contain
               ></v-img>
               <div class="carousel__content--name">
                 {{ member.nama_org_structures }}
@@ -114,6 +114,7 @@ export default {
 
 <style lang="sass" scoped>
 .team__wrapper
+  margin-bottom: 0
   @media only screen and (max-width: 360px)
     margin-bottom: 100px
 

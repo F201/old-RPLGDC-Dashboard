@@ -138,7 +138,7 @@ export default {
       this.tools = this.contents[index].tools;
     }
   },
-  beforeUpdate() {
+  mounted() {
     this.$nextTick(() => {
       this.button(0);
     });
