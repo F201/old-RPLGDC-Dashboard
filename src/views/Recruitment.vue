@@ -71,12 +71,44 @@
                     <div>
                       <label for="birthdate">Birth Date</label>
                     </div>
-                    <input
+                    <!-- <input
                       type="date"
                       name="birthdate"
                       id="birthdate"
                       v-model="birthdate"
-                    />
+                    /> -->
+                    <v-menu
+                      v-model="calendar"
+                      :close-on-content-click="false"
+                      :nudge-right="40"
+                      transition="scale-transition"
+                      offset-y
+                      min-width="290px"
+                    >
+                      <template v-slot:activator="{ on }">
+                        <v-text-field
+                          v-model="birthdate"
+                          prepend-icon="mdi-calendar"
+                          readonly
+                          v-on="on"
+                          background-color="#F2F2F2"
+                          dense
+                          flat
+                          single-line
+                          filled
+                          color="#F0793C"
+                          height="37px"
+                          id="birthdate"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        v-model="birthdate"
+                        @input="calendar = false"
+                        color="#F0793C"
+                        header-color="#F0793C"
+                        event-color="#F0793C"
+                      ></v-date-picker>
+                    </v-menu>
                   </div>
                   <div class="input__container--gender">
                     <div>
@@ -116,6 +148,7 @@
                   v-model="major"
                   color="#F0793C"
                   item-color="#F0793C"
+                  background-color="#F2F2F2"
                 ></v-select>
                 <div>
                   <label>Generation</label>
@@ -506,7 +539,7 @@ export default {
         },
         {
           name: "Game Developer",
-          value: "game",
+          value: "gdc",
           icon: require("@/assets/game.png")
         },
         {
@@ -519,9 +552,11 @@ export default {
       dialog: false,
       alert: false,
       pdfAlert: false,
+      birthdate: new Date().toISOString().substr(0, 10),
+      calendar: false,
       name: "",
       nim: "",
-      birthdate: "",
+      // birthdate: "",
       major: "",
       genderType: "",
       year: "",
@@ -646,7 +681,7 @@ export default {
         imageContainer[0].style.backgroundImage = "";
         return false;
       } else {
-        if (Math.round(fileSize / 512) >= 512) {
+        if (Math.round(fileSize / 1024) >= 512) {
           // alert("Please upload file size less than 1 MB");
           file.value = "";
           this.alert = true;
@@ -723,6 +758,9 @@ export default {
 <style lang="sass" scoped>
 h1, label, .v-btn
   font-family: $raleway
+
+.v-input, .v-input__slot
+    margin: 0
 
 .v-btn
   background: $orange-gradient
@@ -901,10 +939,6 @@ h1, label, .v-btn
       border-radius: 50%
       background: $orange-color
 
-  .v-input, .v-input__slot
-    margin: 0
-    padding: 0
-
   .angkatan--title
     margin-top: -10px
 
@@ -934,8 +968,14 @@ h1, label, .v-btn
     width: auto
     @media only screen and (max-width: 500px)
       width: 100%
-      input#birthdate
+
+    .v-input
+      width: 200px
+      @media only screen and (max-width: 500px)
         width: 100%
+
+      .v-input__slot
+        margin-left: 10px
 
   div.input__container--gender
     width: auto
@@ -945,28 +985,28 @@ h1, label, .v-btn
       @media only screen and (max-width: 500px)
         width: 100%
 
-  input[type="date"]
-    padding: 5px 7px
-    text-transform: uppercase
-    position: relative
+  // input[type="date"]
+  //   padding: 5px 7px
+  //   text-transform: uppercase
+  //   position: relative
 
-  input[type="date"]::-webkit-inner-spin-button
-    display: none
+  // input[type="date"]::-webkit-inner-spin-button
+  //   display: none
 
-  input[type="date"]::-webkit-clear-button
-     display: none
+  // input[type="date"]::-webkit-clear-button
+  //    display: none
 
-  input[type="date"]::-webkit-calendar-picker-indicator
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    width: 170px
-    height: auto
-    color: transparent
-    background: transparent
-    cursor: pointer
+  // input[type="date"]::-webkit-calendar-picker-indicator
+  //   position: absolute
+  //   top: 0
+  //   left: 0
+  //   right: 0
+  //   bottom: 0
+  //   width: 170px
+  //   height: auto
+  //   color: transparent
+  //   background: transparent
+  //   cursor: pointer
 
   input[type="date"]:after
     font-family: "Font Awesome 5 Free"
