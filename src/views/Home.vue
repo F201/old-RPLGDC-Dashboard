@@ -124,19 +124,19 @@ export default {
         {
           header: "OUR VISION",
           content:
-            "1. Menciptakan atmosfir dan lingkungan Laboratorium RPLGDC yang lebih friendly towards all others dan lebih hidup dengan anggota Lab yang aktif mengunjungi Lab <br /> 2. Menciptakan program kerja Lab RPLGDC yang berkualitas serta bekerjasama dengan berbagai Laboratorium IF lainnya <br /> 3. Ekspansi influens dan daya tarik Lab RPLGDC kepada jurusan selain S1 Informatika (seperti kepada jurusan di FIK, D3 RPL, D3 Multimedia, Sistem Informasi, Teknik Industri) <br /> 4. Memberikan output SDM Laboratorium RPLGDC yang berkualitas dan memiliki daya tarik tersendiri untuk kedepannya didepan khalayak ramai",
+            "1. Menciptakan atmosfir dan lingkungan Laboratorium RPLGDC yang lebih nyaman, menciptakan program kerja Lab RPLGDC yang berkualitas, bekerjasama serta ekspansi influens baik kepada sesama laboratorium fakultas IF maupun kepada jurusan & fakultas lain, memberikan output SDM yang berkualitas dan memumpuni kebutuhan dunia IT di dalam maupun di luar perkuliahan. <br /><br /> 2. Menciptakan program kerja Lab RPLGDC yang berkualitas serta bekerjasama dengan berbagai Laboratorium IF lainnya <br /><br /> 3. Ekspansi influens dan daya tarik Lab RPLGDC kepada jurusan selain S1 Informatika (seperti kepada jurusan di FIK, D3 RPL, D3 Multimedia, Sistem Informasi, Teknik Industri) <br /><br /> 4. Memberikan output SDM Laboratorium RPLGDC yang berkualitas dan memiliki daya tarik tersendiri untuk kedepannya didepan khalayak ramai",
           image: require("@/assets/home/rocket.png")
         },
         {
           header: "OUR MISSION",
           content:
-            "1. Menciptakan suasana Laboratorium yang bersih, rapih, dan tertata dengan baik <br /> 2. Memberikan program kerja yang berkualitas dengan usaha yang semaksimal mungkin demi output yang positif <br /> 3. Melakukan kerjasama antar laboratorium maupun antar jurusan yang memiliki interest kepada bidang software development <br /> 4. Memberikan proyekan, materi - materi yang sesuai, serta implementasi brainspark ataupun workshop yang dapat menstimulasi pola berfikir dan bekerja seorang mahasiswa baik internship maupun anggota lab RPLGDC <br /> 5. Mengajak seluruh anggota/aslab RPLGDC untuk bergotong royong dan saling membantu satu dengan lainnya pada tiap acara/program kerja Laboratorium",
+            "1. Menciptakan suasana Laboratorium yang bersih, rapih, dan tertata dengan baik <br /><br /> 2. Memberikan program kerja yang berkualitas dengan usaha yang semaksimal mungkin demi output yang positif <br /><br /> 3. Melakukan kerjasama antar laboratorium maupun antar jurusan yang memiliki interest kepada bidang software development <br /><br /> 4. Memberikan proyekan, materi - materi yang sesuai, serta implementasi brainspark ataupun workshop yang dapat menstimulasi pola berfikir dan bekerja seorang mahasiswa baik internship maupun anggota lab RPLGDC <br /><br /> 5. Mengajak seluruh anggota/aslab RPLGDC untuk bergotong royong dan saling membantu satu dengan lainnya pada tiap acara/program kerja Laboratorium",
           image: require("@/assets/home/planets.png")
         },
         {
           header: "MEMBER BENEFIT",
           content:
-            "1. Mendapatkan ilmu yang bermanfaat <br /> 2. Dapat bertemu dengan wajah - wajah baru yang memiliki ide cemerlang <br /> 3. Sharing ilmu pengetahuan yang ada dengan orang lain <br /> 4. Dapat mengimplementasikan skill dan ilmu yang ada pada proyekan yang didapatkan <br /> 5. Memiliki wadah untuk mengaplikasikan skill Software Development dan Game Development <br /> 6. Memiliki wadah yang berfokus pada research group mengenai Software Development maupun Game Development",
+            "1. Mendapatkan ilmu yang bermanfaat <br /><br /> 2. Dapat bertemu dengan wajah - wajah baru yang memiliki ide cemerlang <br /><br /> 3. Sharing ilmu pengetahuan yang ada dengan orang lain <br /><br /> 4. Dapat mengimplementasikan skill dan ilmu yang ada pada proyekan yang didapatkan <br /><br /> 5. Memiliki wadah untuk mengaplikasikan skill Software Development dan Game Development <br /><br /> 6. Memiliki wadah yang berfokus pada research group mengenai Software Development maupun Game Development",
           image: require("@/assets/home/astronaut.png")
         }
       ],

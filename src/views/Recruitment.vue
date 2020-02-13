@@ -145,14 +145,14 @@
                   <label
                     v-for="(divisions, index) in division"
                     :key="index"
-                    :for="`${divisions.id}`"
+                    :for="divisions.value"
                     class="radio__container radio__item radio__item--divisi d-flex justify-space-between"
                   >
                     {{ divisions.name }}
                     <input
                       type="radio"
                       name="divisi"
-                      :id="`${divisions.value}`"
+                      :id="divisions.value"
                       :value="divisions.value"
                       v-model="divisi"
                     />
