@@ -17,7 +17,6 @@
             v-for="(activity, index) in activities"
             :key="index"
           >
-            <!-- src="../../assets/division/activity/activity.png" -->
             <v-img
               :src="activity.gambar_activities"
               max-width="350px"
@@ -59,14 +58,19 @@
         <div
           class="content-wrapper mx-sm-12 mx-3 pb-8 d-flex justify-space-around flex-wrap"
         >
-          <div class="content-container d-flex flex-column align-center">
+          <div
+            class="content-container d-flex flex-column align-center"
+            v-for="(tool, index) in tools"
+            :key="index"
+          >
             <v-img
-              src="../../assets/division/activity/icon/React.png"
+              :src="tool.gambar_tools"
               max-width="84.5px"
               max-height="84.5px"
               contain
+              eager
             ></v-img>
-            <div class="tool-text">React Native</div>
+            <div class="tool-text">{{ tool.nama_tools }}</div>
           </div>
         </div>
       </v-card>

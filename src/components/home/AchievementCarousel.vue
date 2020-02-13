@@ -14,15 +14,15 @@
           <div class="carousel__content--container mb-4 ml-sm-6">
             <div class="carousel__content">
               <div class="carousel__content--name text-uppercase">
-                {{ achievement.peringkat }} {{ achievement.judul }}
+                {{ achievement.peringkat }} {{ achievement.nama_lomba }}
               </div>
               <div class="carousel__content--year">{{ achievement.tahun }}</div>
-              <!-- <div class="carousel__content--product mt-8 d-flex align-center">
+              <div class="carousel__content--product mt-8 d-flex align-center">
                 <v-icon size="24px" color="white" class="mr-2 pa-2">
                   mdi-package-variant
                 </v-icon>
-                <div class="product__title">Produk atau judul pemenang</div>
-              </div> -->
+                <div class="product__title">{{ achievement.judul }}</div>
+              </div>
               <div class="carousel__content--team d-flex mt-3">
                 <v-icon
                   size="24px"

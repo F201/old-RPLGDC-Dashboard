@@ -10,7 +10,7 @@
             />
             <NewsCarousel class="mt-6" />
           </div> -->
-          <div class="section-division">
+          <div id="top" class="section-division">
             <TextPlaceholder
               :header="sectionDivision.header"
               :content="sectionDivision.content"

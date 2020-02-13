@@ -140,7 +140,9 @@ export default {
   .v-btn:not(.float-button)
     font-family: $raleway
     background: $orange-gradient
-    font-size: 16px
+    font-size: 12px
+    @media only screen and (min-width: 500px)
+      font-size: 16px
 
   .float-button
     position: absolute

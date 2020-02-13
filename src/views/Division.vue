@@ -20,13 +20,14 @@
                   depressed
                   class="white--text"
                   @click="toggleOverlay(division.id_divisi)"
+                  :loading="loading"
                 >
                   SEE DETAIL
                 </v-btn>
               </v-card-actions>
             </div>
             <v-img
-              :src="`${division.gambar_divisi}`"
+              :src="division.gambar_divisi"
               width="333px"
               min-height="333px"
               eager
@@ -89,11 +90,13 @@ export default {
   },
   data() {
     return {
-      divisions: null
+      divisions: null,
+      loading: false
     };
   },
   methods: {
     toggleOverlay(id) {
+      this.loading = true;
       fetch("https://rplgdc-dashboard.herokuapp.com/detail_divisions/" + id)
         .then(res => res.json())
         .then(data => {
@@ -104,6 +107,7 @@ export default {
             data.division[0].activities,
             data.division[0].tools
           );
+          this.loading = false;
         });
     }
   },

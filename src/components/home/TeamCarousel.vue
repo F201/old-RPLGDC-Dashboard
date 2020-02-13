@@ -14,7 +14,7 @@
           justify="center"
         >
           <div
-            class="carousel__content text-center mb-4 mx-sm-6"
+            class="carousel__content text-center mt-6 mb-4 mx-sm-6"
             v-for="(member, idx_member) in chunk"
             :key="idx_member"
           >
@@ -50,15 +50,24 @@ export default {
     }
   },
   methods: {
-    endIndex(index) {
-      let i = index * 2;
-      if (index === 0) {
-        i = 3;
+    // endIndex(index) {
+    //   let i = index * 2;
+    //   if (index === 0) {
+    //     i = 3;
+    //   }
+    //   return i;
+    // },
+    // startIndex(index) {
+    //   return index * 3;
+    // },
+    buttonColor() {
+      let buttons = document.querySelectorAll(".v-window__container .v-btn");
+      for (let j = 0; j < buttons.length; j++) {
+        buttons[j].style.backgroundColor = "#F0793C";
+        buttons[j].onclick = () => {
+          this.buttonColor();
+        };
       }
-      return i;
-    },
-    startIndex(index) {
-      return index * 3;
     },
     chunk32(_items) {
       let i;
@@ -71,6 +80,11 @@ export default {
       }
       return result;
     }
+  },
+  beforeUpdate() {
+    this.$nextTick(() => {
+      this.buttonColor();
+    });
   },
   beforeCreate() {
     fetch("https://rplgdc-dashboard.herokuapp.com/organizations")

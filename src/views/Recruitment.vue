@@ -354,12 +354,49 @@
                   disabled
                 ></textarea>
                 <div class="text-center mt-4">
-                  <v-btn class="prev-button" depressed text @click="prevStep()"
+                  <!-- <v-btn class="prev-button" depressed text @click="prevStep()"
                     >PREV</v-btn
-                  >
-                  <v-btn depressed text :loading="loading" @click="submit()"
+                  > -->
+                  <!-- <v-btn depressed text @click="submit()"
                     >FINISH</v-btn
-                  >
+                  > -->
+                  <template>
+                    <div class="text-center">
+                      <v-btn
+                        class="prev-button"
+                        depressed
+                        text
+                        @click="prevStep()"
+                        >PREV</v-btn
+                      >
+                      <v-btn
+                        :disabled="dialog"
+                        :loading="dialog"
+                        class="white--text"
+                        @click="submit()"
+                      >
+                        FINISH
+                      </v-btn>
+                      <v-dialog
+                        v-model="dialog"
+                        hide-overlay
+                        persistent
+                        width="300"
+                        color="#F0793C"
+                      >
+                        <v-card color="#F0793C" dark>
+                          <v-card-text>
+                            Uploading your data
+                            <v-progress-linear
+                              indeterminate
+                              color="white"
+                              class="mb-0"
+                            ></v-progress-linear>
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </template>
                 </div>
               </div>
             </v-stepper-content>
@@ -415,7 +452,7 @@ export default {
       generation: ["2017", "2018", "2019"],
       division: [
         {
-          name: "Mobile Programming",
+          name: "Mobile Developer",
           value: "mobile",
           icon: require("@/assets/mobile.png")
         },
@@ -430,17 +467,18 @@ export default {
           icon: require("@/assets/web.png")
         },
         {
-          name: "Game Programming",
+          name: "Game Developer",
           value: "game",
           icon: require("@/assets/game.png")
         },
         {
-          name: "UI/UX",
+          name: "UI/UX Designer",
           value: "uiux",
           icon: require("@/assets/uiux.png")
         }
       ],
-      steps: 1,
+      steps: 3,
+      dialog: false,
       name: "",
       nim: "",
       birthdate: "",
@@ -575,10 +613,12 @@ export default {
       fileData.append("cv", this.fileCv);
       fileData.append("motivation_letter", this.motivation);
       fileData.append("portofolio", this.portfolio);
+      this.dialog = true;
       this.$store
         .dispatch("recruitment/postRecruitment", fileData)
         .then(res => {
-          if (res.status === 200)
+          this.dialog = false;
+          if (res.status === 200) {
             this.$swal(
               "Success",
               "Berhasil melakukan registrasi!",
@@ -586,7 +626,7 @@ export default {
             ).then(() => {
               this.$router.push("/");
             });
-          else this.$swal("Error", "Error registrasi!", "error");
+          } else this.$swal("Error", "Error registrasi!", "error");
         });
     }
   },

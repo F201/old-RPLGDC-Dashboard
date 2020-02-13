@@ -8,7 +8,7 @@
   >
     <div class="icon-wrapper d-flex justify-space-around flex-wrap">
       <div
-        class="icon-container mx-4"
+        class="icon-container mx-4 d-flex flex-column justify-center align-center"
         v-for="(division, index) in divisions"
         :key="index"
       >
@@ -17,6 +17,7 @@
           width="160px"
           height="160px"
           eager
+          contain
         ></v-img>
         <v-card-title class="justify-center text-uppercase">{{
           division.nama_divisi
