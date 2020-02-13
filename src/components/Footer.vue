@@ -26,7 +26,9 @@
           </v-btn>
         </div>
       </template>
-      <div>&copy; 2019 RPLGDC Laboratory, All Right Reserved</div>
+      <div class="copyright">
+        &copy; 2019 RPLGDC Laboratory, All Right Reserved
+      </div>
     </div>
   </footer>
 </template>
@@ -46,7 +48,7 @@ export default {
     };
   },
   beforeCreate() {
-    fetch("https://rplgdc-dashboard.herokuapp.com/socials")
+    fetch(process.env.VUE_APP_URL + "socials")
       .then(res => res.json())
       .then(data => {
         this.instagram = data.data[0];
@@ -67,6 +69,9 @@ export default {
 footer.footer--register
   height: 100px
   margin-top: 0
+  @media only screen and (max-width: 768px)
+    .footer__bottom--title, .contacts, .copyright
+      color: black
 
 .footer
   width: auto

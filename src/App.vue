@@ -25,4 +25,7 @@ export default {
 
 <style lang="sass">
 @import "@/sass/variables.sass"
+html, body
+  margin: 0
+  padding: 0
 </style>

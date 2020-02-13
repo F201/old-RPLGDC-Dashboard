@@ -16,16 +16,16 @@
           class="jumbotron__content--desc mt-n5"
           v-show="this.$route.path === '/'"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-          purus sit amet luctus venenatis, lectus
+          “Have the courage to follow your heart and intuition. They somehow
+          know what you truly want to become.” <br />- Steve Jobs
         </div>
-        <v-btn
+        <!-- <v-btn
           class="jumbotron__content--button mt-4 white"
           v-show="this.$route.path === '/'"
           text
         >
           <span class="jumbotron__content--button-text">PLAY OUR GAME</span>
-        </v-btn>
+        </v-btn> -->
         <v-btn
           class="jumbotron__content--button mt-12 white"
           v-show="this.$route.path === '/'"
@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     goTo: el => {
-      const element = document.getElementById(el);
+      const element = document.getElementsByClassName(el)[0];
       const top = element.offsetTop;
       window.scrollTo({
         top: top - 20,
@@ -113,7 +113,7 @@ export default {
 
       .jumbotron__content--title
         font-family: $raleway
-        font-size: 75px
+        font-size: 55px
         @media only screen and (min-width: 768px)
           font-size: 120px
 

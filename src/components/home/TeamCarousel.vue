@@ -1,47 +1,63 @@
 <template>
-  <v-carousel
-    height="auto"
-    :continuous="false"
-    class="mx-auto"
-    hide-delimiters
-    v-if="members != null"
-  >
-    <v-carousel-item v-for="(chunk, index) in chunks" :key="index">
-      <div class="carousel__bg pa-6 pb-12 white">
-        <v-row
-          class="fill-height d-flex justify-space-around flex-column flex-sm-row"
-          align="center"
-          justify="center"
-        >
-          <div
-            class="carousel__content text-center mt-6 mb-4 mx-sm-6"
-            v-for="(member, idx_member) in chunk"
-            :key="idx_member"
+  <div v-if="members != null" class="team__wrapper">
+    <TextPlaceholder
+      :header="sectionTeam.header"
+      :content="sectionTeam.content"
+    />
+    <v-carousel
+      height="auto"
+      :continuous="false"
+      class="mx-auto"
+      hide-delimiters
+    >
+      <v-carousel-item v-for="(chunk, index) in chunks" :key="index">
+        <div class="carousel__bg pa-6 pb-12 white">
+          <v-row
+            class="fill-height d-flex justify-space-around flex-column flex-sm-row"
+            align="center"
+            justify="center"
           >
-            <v-img
-              class="carousel__content--img"
-              :src="member.foto_org_structures"
-              contain
-              eager
-            ></v-img>
-            <div class="carousel__content--name">
-              {{ member.nama_org_structures }}
+            <div
+              class="carousel__content d-flex flex-column justify-center align-center text-center mt-6 mb-4 mx-sm-6"
+              v-for="(member, idx_member) in chunk"
+              :key="idx_member"
+            >
+              <v-img
+                class="carousel__content--img"
+                :src="member.foto_org_structures"
+                contain
+                eager
+              ></v-img>
+              <div class="carousel__content--name">
+                {{ member.nama_org_structures }}
+              </div>
+              <div class="carousel__content--position">
+                {{ member.posisi_org_structures }}
+              </div>
             </div>
-            <div class="carousel__content--position">
-              {{ member.posisi_org_structures }}
-            </div>
-          </div>
-        </v-row>
-      </div>
-    </v-carousel-item>
-  </v-carousel>
+          </v-row>
+        </div>
+      </v-carousel-item>
+    </v-carousel>
+  </div>
 </template>
 
 <script>
+import TextPlaceholder from "@/components/home/TextPlaceholder";
+
 export default {
+  name: "TeamCarousel",
+  components: {
+    TextPlaceholder
+  },
   data() {
     return {
-      members: null
+      members: null,
+      sectionTeam: {
+        header: "OUR TEAM",
+        content:
+          "There are 9 Lab Assistants in total and a head of laboratory that keeps RPLGDC Lab always active"
+      }
     };
   },
   computed: {
@@ -87,7 +103,7 @@ export default {
     });
   },
   beforeCreate() {
-    fetch("https://rplgdc-dashboard.herokuapp.com/organizations")
+    fetch(process.env.VUE_APP_URL + "organizations")
       .then(res => res.json())
       .then(data => {
         this.members = data.data;
@@ -97,6 +113,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.team__wrapper
+  @media only screen and (max-width: 360px)
+    margin-bottom: 100px
+
 .v-carousel
   border-radius: 40px
   z-index: 1

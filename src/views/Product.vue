@@ -40,7 +40,7 @@ export default {
     };
   },
   created() {
-    fetch("https://rplgdc-dashboard.herokuapp.com/products")
+    fetch(process.env.VUE_APP_URL + "products")
       .then(res => res.json())
       .then(data => {
         this.productList = data.data;

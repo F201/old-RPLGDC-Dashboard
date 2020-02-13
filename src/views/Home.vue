@@ -3,18 +3,18 @@
     <v-container class="px-sm-6">
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
-          <!-- <div id="top" class="section-news">
-            <TextPlaceholder
+          <div class="top section-news">
+            <!-- <TextPlaceholder
               :header="sectionNews.header"
               :content="sectionNews.content"
-            />
+            /> -->
             <NewsCarousel class="mt-6" />
-          </div> -->
-          <div id="top" class="section-division">
-            <TextPlaceholder
+          </div>
+          <div class="top section-division">
+            <!-- <TextPlaceholder
               :header="sectionDivision.header"
               :content="sectionDivision.content"
-            />
+            /> -->
             <DivisionCard class="mt-6" />
           </div>
           <div class="section-details mx-auto">
@@ -37,24 +37,24 @@
             </div>
           </div>
           <div class="section-activity">
-            <TextPlaceholder
+            <!-- <TextPlaceholder
               :header="sectionActivity.header"
               :content="sectionActivity.content"
-            />
+            /> -->
             <ActivityCarousel class="mt-6" />
           </div>
           <div class="section-achievement">
-            <TextPlaceholder
+            <!-- <TextPlaceholder
               :header="sectionAchievement.header"
               :content="sectionAchievement.content"
-            />
+            /> -->
             <AchievementCarousel class="mt-6" />
           </div>
           <div class="section-team">
-            <TextPlaceholder
+            <!-- <TextPlaceholder
               :header="sectionTeam.header"
               :content="sectionTeam.content"
-            />
+            /> -->
             <TeamCarousel class="mt-6" />
           </div>
         </v-col>
@@ -99,7 +99,7 @@ import DivisionCard from "@/components/home/DivisionCard";
 import TeamCarousel from "@/components/home/TeamCarousel";
 import AchievementCarousel from "@/components/home/AchievementCarousel";
 import ActivityCarousel from "@/components/home/ActivityCarousel";
-// import NewsCarousel from "@/components/home/NewsCarousel";
+import NewsCarousel from "@/components/home/NewsCarousel";
 import Footer from "@/components/Footer";
 
 export default {
@@ -110,51 +110,51 @@ export default {
     TeamCarousel,
     AchievementCarousel,
     ActivityCarousel,
-    // NewsCarousel,
+    NewsCarousel,
     Footer
   },
   data() {
     return {
-      sectionDivision: {
-        header: "OUR DIVISION",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
-      },
+      // sectionDivision: {
+      //   header: "OUR DIVISION",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
+      // },
       sectionDetails: [
         {
           header: "OUR VISION",
           content:
-            "1. Menciptakan atmosfir dan lingkungan Laboratorium RPLGDC yang lebih nyaman, menciptakan program kerja Lab RPLGDC yang berkualitas, bekerjasama serta ekspansi influens baik kepada sesama laboratorium fakultas IF maupun kepada jurusan & fakultas lain, memberikan output SDM yang berkualitas dan memumpuni kebutuhan dunia IT di dalam maupun di luar perkuliahan. <br /><br /> 2. Menciptakan program kerja Lab RPLGDC yang berkualitas serta bekerjasama dengan berbagai Laboratorium IF lainnya <br /><br /> 3. Ekspansi influens dan daya tarik Lab RPLGDC kepada jurusan selain S1 Informatika (seperti kepada jurusan di FIK, D3 RPL, D3 Multimedia, Sistem Informasi, Teknik Industri) <br /><br /> 4. Memberikan output SDM Laboratorium RPLGDC yang berkualitas dan memiliki daya tarik tersendiri untuk kedepannya didepan khalayak ramai",
+            "Creating an atmosphere and an environment that are comfortable in RPLGDC Laboratorium, creating a more quality assured working conditions & events, working together aswell as expanding the sphere of influence to other IF Faculty laboratoriums and other majors in other faculties, giving a qualified & capable human resources output that are needed in IT World.",
           image: require("@/assets/home/rocket.png")
         },
         {
           header: "OUR MISSION",
           content:
-            "1. Menciptakan suasana Laboratorium yang bersih, rapih, dan tertata dengan baik <br /><br /> 2. Memberikan program kerja yang berkualitas dengan usaha yang semaksimal mungkin demi output yang positif <br /><br /> 3. Melakukan kerjasama antar laboratorium maupun antar jurusan yang memiliki interest kepada bidang software development <br /><br /> 4. Memberikan proyekan, materi - materi yang sesuai, serta implementasi brainspark ataupun workshop yang dapat menstimulasi pola berfikir dan bekerja seorang mahasiswa baik internship maupun anggota lab RPLGDC <br /><br /> 5. Mengajak seluruh anggota/aslab RPLGDC untuk bergotong royong dan saling membantu satu dengan lainnya pada tiap acara/program kerja Laboratorium",
+            "Creating a clean, fresh and also a comfortable laboratorium environment <br /><br /> Giving a more polished and 'quality oriented' laboratorium events & workshops <br /><br /> Making collaborations and working together with other laboratoriums, inside or outside of the IF Faculty with an interest in software development <br /><br /> Giving an opportunity to learn, propose any possible projects aswell as implementing brainspark or workshop sessions that could stimulate a positive feedback in the IT World. <br /><br /> Persuade other laboratorium members to work together with others in any events to achieve a maximized laboratorium performances.",
           image: require("@/assets/home/planets.png")
         },
         {
           header: "MEMBER BENEFIT",
           content:
-            "1. Mendapatkan ilmu yang bermanfaat <br /><br /> 2. Dapat bertemu dengan wajah - wajah baru yang memiliki ide cemerlang <br /><br /> 3. Sharing ilmu pengetahuan yang ada dengan orang lain <br /><br /> 4. Dapat mengimplementasikan skill dan ilmu yang ada pada proyekan yang didapatkan <br /><br /> 5. Memiliki wadah untuk mengaplikasikan skill Software Development dan Game Development <br /><br /> 6. Memiliki wadah yang berfokus pada research group mengenai Software Development maupun Game Development",
+            ".Able to search and learn many new knowledges that previously remained unknown before <br /><br /> Meet new bright minds that have the same interest as you in software and/or game development <br /><br /> Able to share many knowledges towards other people, inside or outside laboratorium environment <br /><br /> Could implement all of the skills and knowledges that are available to development projects <br /><br /> Having a place to apply and implement software and/or game development skills <br /><br /> Having a place to better focus on research group that are always discussing about the latest topics going in software and/or game development world.",
           image: require("@/assets/home/astronaut.png")
         }
-      ],
-      sectionTeam: {
-        header: "OUR TEAM",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
-      },
-      sectionAchievement: {
-        header: "OUR LATEST ACHIEVEMENT",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
-      },
-      sectionActivity: {
-        header: "OUR LATEST ACTIVITY",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
-      }
+      ]
+      // sectionTeam: {
+      //   header: "OUR TEAM",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
+      // }
+      // sectionAchievement: {
+      //   header: "OUR LATEST ACHIEVEMENT",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
+      // }
+      // sectionActivity: {
+      //   header: "OUR LATEST ACTIVITY",
+      //   content:
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus"
+      // }
       // sectionNews: {
       //   header: "OUR LATEST NEWS",
       //   content:

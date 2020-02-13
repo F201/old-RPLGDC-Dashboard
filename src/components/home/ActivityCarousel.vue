@@ -1,56 +1,68 @@
 <template>
-  <v-carousel
-    class="mx-auto"
-    :continuous="false"
-    hide-delimiters
-    v-if="items != null"
-  >
-    <v-carousel-item
-      v-for="(item, i) in items"
-      :key="i"
-      :src="item.gambar_activities"
-      :alt="item.nama_activities"
-    >
-      <div class="overlay-content__container d-flex flex-wrap">
-        <div
-          class="px-2"
-          v-for="(division, index) in item.divisions"
-          :key="index"
-        >
-          <v-img
-            :src="division.gambar_divisi"
-            width="50px"
-            height="50px"
-            eager
-          ></v-img>
-        </div>
-      </div>
-    </v-carousel-item>
-    <v-carousel-item class="end-slide__wrapper">
-      <div class="end-slide__container d-flex justify-center align-center">
-        <div
-          class="end-slide__items d-flex flex-column justify-center align-center"
-        >
-          <span class="mb-3">WANT TO SEE MORE ?</span>
-          <v-btn
-            href="https://instagram.com/rplgdc_"
-            class="white mt-3"
-            text
-            depressed
+  <div v-if="items != null">
+    <TextPlaceholder
+      :header="sectionActivity.header"
+      :content="sectionActivity.content"
+    />
+    <v-carousel class="mx-auto" :continuous="false" hide-delimiters>
+      <v-carousel-item
+        v-for="(item, i) in items"
+        :key="i"
+        :src="item.gambar_activities"
+        :alt="item.nama_activities"
+      >
+        <div class="overlay-content__container d-flex flex-wrap">
+          <div
+            class="px-2"
+            v-for="(division, index) in item.divisions"
+            :key="index"
           >
-            SEE US ON INSTAGRAM
-          </v-btn>
+            <v-img
+              :src="division.gambar_divisi"
+              width="50px"
+              height="50px"
+              eager
+            ></v-img>
+          </div>
         </div>
-      </div>
-    </v-carousel-item>
-  </v-carousel>
+      </v-carousel-item>
+      <v-carousel-item class="end-slide__wrapper">
+        <div class="end-slide__container d-flex justify-center align-center">
+          <div
+            class="end-slide__items d-flex flex-column justify-center align-center"
+          >
+            <span class="mb-3">WANT TO SEE MORE ?</span>
+            <v-btn
+              href="https://instagram.com/rplgdc_"
+              class="white mt-3"
+              text
+              depressed
+            >
+              SEE US ON INSTAGRAM
+            </v-btn>
+          </div>
+        </div>
+      </v-carousel-item>
+    </v-carousel>
+  </div>
 </template>
 
 <script>
+import TextPlaceholder from "@/components/home/TextPlaceholder";
+
 export default {
+  name: "ActivitiyCarousel",
+  components: {
+    TextPlaceholder
+  },
   data() {
     return {
-      items: null
+      items: null,
+      sectionActivity: {
+        header: "OUR LATEST ACTIVITY",
+        content:
+          "Here are the latest activitiy news happening around our Laboratorium"
+      }
       // [
       //   {
       //     src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"
@@ -84,7 +96,7 @@ export default {
     });
   },
   beforeCreate() {
-    fetch("https://rplgdc-dashboard.herokuapp.com/detail_activities")
+    fetch(process.env.VUE_APP_URL + "detail_activities")
       .then(res => res.json())
       .then(data => {
         this.items = data.activities;
@@ -117,6 +129,8 @@ export default {
         font-family: $raleway
         font-size: 36px
         color: white
+        @media only screen and (max-width: 500px)
+          font-size: 20px
 
       .v-btn
         color: $orange-color

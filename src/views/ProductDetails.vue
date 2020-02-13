@@ -141,7 +141,7 @@ export default {
     });
   },
   beforeCreate() {
-    fetch("https://rplgdc-dashboard.herokuapp.com/detail_products")
+    fetch(process.env.VUE_APP_URL + "detail_products")
       .then(res => res.json())
       .then(data => {
         this.contents = data.product;

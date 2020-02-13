@@ -60,6 +60,9 @@
     .v-card__title
       font-size: 55px
       font-family: $raleway
+      @media only screen and (max-width: 500px)
+        font-size: 32px
+        word-break: break-word
 
     .v-card__text
       font-size: 20px
@@ -97,7 +100,7 @@ export default {
   methods: {
     toggleOverlay(id) {
       this.loading = true;
-      fetch("https://rplgdc-dashboard.herokuapp.com/detail_divisions/" + id)
+      fetch(process.env.VUE_APP_URL + "detail_divisions/" + id)
         .then(res => res.json())
         .then(data => {
           this.$root.$emit(
@@ -112,7 +115,7 @@ export default {
     }
   },
   created() {
-    fetch("https://rplgdc-dashboard.herokuapp.com/divisions/")
+    fetch(process.env.VUE_APP_URL + "divisions/")
       .then(res => res.json())
       .then(data => {
         this.divisions = data.data;

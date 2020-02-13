@@ -82,7 +82,7 @@
                     <div>
                       <label>Jenis Kelamin</label>
                     </div>
-                    <div class="input__container--radio d-flex">
+                    <div class="input__container--radio d-sm-flex">
                       <label
                         v-for="genders in gender"
                         :key="genders"
@@ -120,12 +120,14 @@
                 <div>
                   <label>Angkatan</label>
                 </div>
-                <div class="angkatan__container d-flex justify-space-between">
+                <div
+                  class="angkatan__container d-flex flex-sm-row flex-column justify-sm-space-between"
+                >
                   <label
                     v-for="generations in generation"
                     :key="generations"
                     :for="generations"
-                    class="radio__container radio__item radio__item--generation"
+                    class="radio__container radio__item radio__item--generation mb-sm-0 mb-3"
                   >
                     {{ generations }}
                     <input
@@ -467,13 +469,8 @@ export default {
           icon: require("@/assets/web.png")
         },
         {
-<<<<<<< HEAD
           name: "Game Developer",
           value: "game",
-=======
-          name: "Game Programming",
-          value: "gdc",
->>>>>>> c6d8edfa52ec53add42d1965db47f1c702991092
           icon: require("@/assets/game.png")
         },
         {
@@ -482,7 +479,7 @@ export default {
           icon: require("@/assets/uiux.png")
         }
       ],
-      steps: 3,
+      steps: 1,
       dialog: false,
       name: "",
       nim: "",
@@ -655,6 +652,8 @@ h1, label, .v-btn
 
 .v-stepper
   box-shadow: none
+  @media only screen and (max-width: 500px)
+    width: 100%
 
   .v-stepper__header
     box-shadow: none
@@ -701,6 +700,8 @@ h1, label, .v-btn
   .register__title
     font-family: $raleway
     font-size: 55px
+    @media only screen and (max-width: 500px)
+      font-size: 35px
 
   #profile-form, #review-form
     margin-top: 100px
@@ -709,8 +710,8 @@ h1, label, .v-btn
   .input__wrapper
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
     border-radius: 40px
-    padding: 40px
-    margin: 30px
+    padding: 25px
+    margin: 10px
     @media only screen and (min-width: 768px)
       margin: 30px 120px
 
@@ -757,7 +758,10 @@ h1, label, .v-btn
       margin-top: 12px
 
   #radio__item--Female
-    margin-left: 8px
+    margin-top: 10px
+    @media only screen and (min-width: 500px)
+      margin-left: 8px
+      margin-top: 0
 
   .radio__item
     background-color: #f2f2f2
@@ -834,7 +838,7 @@ h1, label, .v-btn
     width: 140px
 
   #output-major
-    width: 220px
+    width: 100%
     resize: none
 
   label
@@ -845,10 +849,24 @@ h1, label, .v-btn
     height: 32px
     padding: 0 7px
 
+  .input__container--birthdate
+    width: auto
+    @media only screen and (max-width: 500px)
+      width: 100%
+      input#birthdate
+        width: 100%
+
+  div.input__container--gender
+    width: auto
+    @media only screen and (max-width: 500px)
+      width: 100%
+    #radio__item--Male, #radio__item--Female
+      @media only screen and (max-width: 500px)
+        width: 100%
+
   input[type="date"]
     padding: 5px 7px
     text-transform: uppercase
-    width: 170px
     position: relative
 
   input[type="date"]::-webkit-inner-spin-button
@@ -902,6 +920,8 @@ h1, label, .v-btn
 
   input[type="text"], textarea, .v-input
     width: 382px
+    @media only screen and (max-width: 500px)
+      width: 100%
 
   input, select, textarea
     background-color: #F2F2F2

@@ -1,5 +1,5 @@
 <template>
-  <div class="textplaceholder d-flex flex-column align-center">
+  <div class="textplaceholder mb-6 d-flex flex-column align-center">
     <div class="textplaceholder--header">{{ header }}</div>
     <p class="textplaceholder--content" v-html="content"></p>
   </div>

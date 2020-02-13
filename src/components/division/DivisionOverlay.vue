@@ -13,7 +13,7 @@
         </v-card-title>
         <div class="content-wrapper mx-sm-12">
           <div
-            class="content-container d-flex flex-md-nowrap flex-wrap justify-center"
+            class="content-container--main d-flex flex-md-nowrap flex-wrap justify-center"
             v-for="(activity, index) in activities"
             :key="index"
           >
@@ -23,7 +23,7 @@
               max-height="199px"
               contain
             ></v-img>
-            <div class="content-text mx-4 mt-3 mt-sm-0">
+            <div class="content-text mx-md-4 mx-0 mt-3 mt-sm-0">
               <p class="content-text__title text-uppercase">
                 {{ activity.nama_activities }}
               </p>
@@ -106,7 +106,7 @@
     text-align: center
 
 .content-wrapper
-  .content-container
+  .content-container--main
     margin: 0 10px
     .content-text
       .content-text__title
@@ -118,14 +118,18 @@
   .tool-text
     font-family: $raleway
     font-size: 15px
+    word-break: break-word
 </style>
 
 <style scoped>
 .v-responsive.v-image {
   order: 0;
 }
-.content-container:nth-child(even) .v-responsive.v-image {
-  order: 1;
+
+@media only screen and (min-width: 768px) {
+  .content-container--main:nth-child(even) .v-responsive.v-image {
+    order: 1;
+  }
 }
 </style>
 
