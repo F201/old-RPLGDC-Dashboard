@@ -9,12 +9,17 @@
           <div class="content_wrapper d-flex flex-lg-nowrap flex-wrap">
             <v-carousel height="auto" hide-delimiters>
               <v-carousel-item
-                v-for="(contents, index) in contents"
+                v-for="(content, index) in contents"
                 :key="index"
               >
                 <div color="white">
                   <v-row align="center" justify="center">
-                    <v-img :src="img" max-width="338px" contain eager></v-img>
+                    <v-img
+                      :src="content.gambar_products"
+                      max-width="338px"
+                      contain
+                      eager
+                    ></v-img>
                   </v-row>
                 </div>
               </v-carousel-item>
@@ -73,7 +78,6 @@ export default {
       title: null,
       desc: null,
       category: null,
-      img: null,
       tools: null
       // [
       //   {
@@ -126,14 +130,13 @@ export default {
           this.changeContent(index);
         };
       }
+    },
+    changeContent(index) {
+      this.title = this.contents[index].nama_products;
+      this.category = this.contents[index].kategori_products;
+      this.desc = this.contents[index].deskripsi;
+      this.tools = this.contents[index].tools;
     }
-
-    // changeContent(index) {
-    //   this.title = this.contents[index].nama_products;
-    //   this.category = this.contents[index].kategori_products;
-    //   this.desc = this.contents[index].deskripsi;
-    //   this.img = this.contents[index].gambar_products;
-    // }
   },
   beforeUpdate() {
     this.$nextTick(() => {
@@ -148,7 +151,7 @@ export default {
         this.title = this.contents[0].nama_products;
         this.desc = this.contents[0].deskripsi;
         this.category = this.contents[0].kategori_products;
-        this.img = this.contents[0].gambar_products;
+        // this.img = this.contents[0].gambar_products;
         this.tools = this.contents[0].tools;
       });
   }
