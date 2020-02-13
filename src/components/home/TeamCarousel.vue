@@ -7,10 +7,7 @@
     v-if="members != null"
   >
     <v-carousel-item
-      v-for="(member, index) in members.slice(
-        0,
-        (Math.ceil(this.members.length / 3) * 3) / 3
-      )"
+      v-for="(chunk, index) in chunks"
       :key="index"
     >
       <div class="carousel__bg pa-6 pb-12 white">
@@ -21,11 +18,8 @@
         >
           <div
             class="carousel__content text-center mb-4 mx-sm-6"
-            v-for="(member, index) in members.slice(
-              startIndex(index),
-              endIndex(startIndex(index))
-            )"
-            :key="index"
+            v-for="(member, idx_member) in chunk"
+            :key="idx_member"
           >
             <v-img
               class="carousel__content--img"
@@ -53,6 +47,11 @@ export default {
       members: null
     };
   },
+  computed: {
+    chunks() {
+      return this.chunk32(this.members, 3);
+    }
+  },
   methods: {
     endIndex(index) {
       let i = index * 2;
@@ -63,6 +62,17 @@ export default {
     },
     startIndex(index) {
       return index * 3;
+    },
+    chunk32(_items) {
+      let i;
+      const l = Math.ceil(_items.length / 3);
+      const items = _items.slice();
+      const result = [];
+      for (i = 1; i <= l; i++) {
+        const chunk3 = items.splice(0, 3);
+        result.push(chunk3);
+      }
+      return result;
     }
   },
   beforeCreate() {
