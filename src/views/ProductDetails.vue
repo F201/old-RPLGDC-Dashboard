@@ -11,6 +11,7 @@
               height="auto"
               hide-delimiters
               v-if="contents != null && contents.length != 0"
+              v-model="index"
             >
               <v-carousel-item
                 v-for="(content, index) in contents"
@@ -134,11 +135,11 @@ export default {
         buttons[j].style.backgroundColor = "#F0793C";
         buttons[j].onclick = () => {
           // console.log((this.index += 1));
-          this.button(
-            this.index < this.contents.length - 1
-              ? (this.index += 1)
-              : (this.index = 0)
-          );
+          // this.button(
+          //   this.index < this.contents.length - 1
+          //     ? (this.index += 1)
+          //     : (this.index = 0)
+          // );
           this.changeContent(this.index);
         };
       }
