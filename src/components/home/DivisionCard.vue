@@ -12,7 +12,7 @@
     >
       <div class="icon-wrapper d-flex justify-space-around flex-wrap">
         <div
-          class="icon-container mx-4 d-flex flex-column justify-center align-center"
+          class="icon-container mx-2 d-flex flex-column justify-center align-center"
           v-for="(division, index) in divisions"
           :key="index"
         >
@@ -91,6 +91,9 @@ export default {
 .v-card
   font-family: $raleway
   border-radius: 40px
+
+  .v-card__title
+    word-break: break-word
 
   .v-btn
     background: $orange-gradient
