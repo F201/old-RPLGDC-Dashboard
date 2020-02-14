@@ -240,6 +240,7 @@
                   cols="30"
                   rows="10"
                   v-model="portfolio"
+                  placeholder="ex. https://github.com/F201, https://medium.com/rplgdc-laboratory, https://github.com/ajipsantoso, https://dribbble.com/galihtrenggala"
                 ></textarea>
                 <div class="text-center mt-4">
                   <v-btn class="prev-button" depressed text @click="prevStep()"
@@ -756,6 +757,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+\::-webkit-input-placeholder
+  /* Edge
+  color: #BABABA
+
+\:-ms-input-placeholder
+  /* Internet Explorer 10-11
+  color: #BABABA
+
+\::placeholder
+  color: #BABABA
+
 h1, label, .v-btn
   font-family: $raleway
 
