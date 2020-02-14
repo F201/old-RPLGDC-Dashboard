@@ -17,8 +17,10 @@
               :src="item.gambar"
               eager
               max-width="460px"
-              class="mr-sm-6"
+              class="mr-sm-6 mt-n5 mt-sm-auto"
               contain
+              height="345px"
+              max-height="345px"
             ></v-img>
             <div class="carousel-container d-flex flex-column">
               <div

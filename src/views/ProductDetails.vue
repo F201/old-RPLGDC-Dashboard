@@ -203,6 +203,7 @@ export default {
     .product__details--title
       font-family: $raleway
       font-size: 36px
+      word-break: break-word
 
     .v-btn
       background-color: $orange-color

@@ -18,7 +18,7 @@
             justify="center"
           >
             <div
-              class="carousel__content d-flex flex-column justify-center align-center text-center mt-6 mb-4 mx-sm-6"
+              class="carousel__content d-flex flex-column justify-center align-center text-center mt-6 mb-4 mx-4"
               v-for="(member, idx_member) in chunk"
               :key="idx_member"
             >
@@ -116,7 +116,7 @@ export default {
 .team__wrapper
   margin-bottom: 0
   @media only screen and (max-width: 360px)
-    margin-bottom: 100px
+    margin-bottom: 500px
 
 .v-carousel
   border-radius: 40px

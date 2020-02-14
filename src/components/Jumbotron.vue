@@ -154,11 +154,11 @@ export default {
     height: 650px
     background-position: right
     right: -70px
-    bottom: -110px
+    bottom: -130px
     transform: rotate(-9deg)
     @media only screen and (min-width: 1025px)
       width: 100%
-      bottom: -95px
+      bottom: -200px
       transform: none
 
   .planet_1--division

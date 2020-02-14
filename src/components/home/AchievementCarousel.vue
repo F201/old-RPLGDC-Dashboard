@@ -21,6 +21,7 @@
               :eager="true"
               max-width="537px"
               max-height="342px"
+              height="342px"
               class="align-self-start"
               contain
             ></v-img>

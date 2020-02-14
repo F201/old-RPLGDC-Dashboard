@@ -232,7 +232,7 @@
                   @change="getFileMotivation"
                 />
                 <div class="mt-2">
-                  <label for="portfolio">Portfolio</label>
+                  <label for="portfolio">Link Portfolio</label>
                 </div>
                 <textarea
                   name="portfolio"
@@ -379,7 +379,7 @@
                   disabled
                 />
                 <div class="mt-4">
-                  <label for="output-portfolio">Portfolio</label>
+                  <label for="output-portfolio">Link Portfolio</label>
                 </div>
                 <textarea
                   name="output-portfolio"
