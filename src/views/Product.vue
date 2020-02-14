@@ -4,7 +4,7 @@
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
           <div class="d-flex flex-wrap justify-center">
-            <template v-if="productList != null">
+            <template v-if="productList != null && productList.length != 0">
               <div
                 v-for="productCard in productList"
                 :key="productCard.id_products"

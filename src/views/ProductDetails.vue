@@ -7,7 +7,11 @@
       <v-row class="px-sm-6">
         <v-col class="px-sm-6">
           <div class="content_wrapper d-flex flex-lg-nowrap flex-wrap">
-            <v-carousel height="auto" hide-delimiters>
+            <v-carousel
+              height="auto"
+              hide-delimiters
+              v-if="contents != null && contents.length != 0"
+            >
               <v-carousel-item
                 v-for="(content, index) in contents"
                 :key="index"

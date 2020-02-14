@@ -1,5 +1,5 @@
 <template>
-  <div v-if="achievements != null">
+  <div v-if="achievements != null && achievements.length != 0">
     <TextPlaceholder
       :header="sectionAchievement.header"
       :content="sectionAchievement.content"

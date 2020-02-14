@@ -1,5 +1,5 @@
 <template>
-  <div v-if="divisions != null">
+  <div v-if="divisions != null && divisions.length != 0">
     <TextPlaceholder
       :header="sectionDivision.header"
       :content="sectionDivision.content"

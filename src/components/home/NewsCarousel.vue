@@ -1,5 +1,5 @@
 <template>
-  <div v-if="news != null">
+  <div v-if="news != null && news.length != 0">
     <TextPlaceholder
       :header="sectionNews.header"
       :content="sectionNews.content"

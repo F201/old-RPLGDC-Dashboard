@@ -1,5 +1,5 @@
 <template>
-  <div v-if="members != null" class="team__wrapper">
+  <div v-if="members != null && members.length != 0" class="team__wrapper">
     <TextPlaceholder
       :header="sectionTeam.header"
       :content="sectionTeam.content"
