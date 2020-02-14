@@ -1,5 +1,5 @@
 <template>
-  <div v-if="achievements != null">
+  <div v-if="achievements != null && achievements.length != 0">
     <TextPlaceholder
       :header="sectionAchievement.header"
       :content="sectionAchievement.content"
@@ -150,10 +150,10 @@ export default {
     });
   },
   beforeCreate() {
-    fetch(process.env.VUE_APP_URL + "achievements")
+    fetch(process.env.VUE_APP_URL + "detail_achievement")
       .then(res => res.json())
       .then(data => {
-        this.achievements = data.data;
+        this.achievements = data.achievement;
       });
   }
 };
