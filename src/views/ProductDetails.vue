@@ -41,22 +41,26 @@
                 Deskripsi
               </div>
               <p class="mb-5 product__details--desc">{{ desc }}</p>
-              <div class="product__details--sub font-weight-bold">
-                Tool & Framework
-              </div>
-              <div
-                class="product__details--tools d-flex flex-wrap align-center"
-              >
-                <div class="mx-3" v-for="(tool, index) in tools" :key="index">
-                  <v-img
-                    :src="tool.gambar_tools"
-                    max-width="84.5px"
-                    max-height="84.5px"
-                    contain
-                  ></v-img>
-                  <div class="tool-text text-center">{{ tool.nama_tools }}</div>
+              <template v-if="tools != null && tools.length != 0">
+                <div class="product__details--sub font-weight-bold">
+                  Tool & Framework
                 </div>
-              </div>
+                <div
+                  class="product__details--tools d-flex flex-wrap align-center"
+                >
+                  <div class="mx-3" v-for="(tool, index) in tools" :key="index">
+                    <v-img
+                      :src="tool.gambar_tools"
+                      max-width="84.5px"
+                      max-height="84.5px"
+                      contain
+                    ></v-img>
+                    <div class="tool-text text-center">
+                      {{ tool.nama_tools }}
+                    </div>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
         </v-col>
@@ -82,7 +86,8 @@ export default {
       title: null,
       desc: null,
       category: null,
-      tools: null
+      tools: null,
+      index: 0
       // [
       //   {
       //     title: "Katsir 1",
@@ -123,15 +128,18 @@ export default {
     };
   },
   methods: {
-    button(index) {
+    button() {
       let buttons = document.querySelectorAll(".v-window__container .v-btn");
       for (let j = 0; j < buttons.length; j++) {
         buttons[j].style.backgroundColor = "#F0793C";
         buttons[j].onclick = () => {
+          // console.log((this.index += 1));
           this.button(
-            index < this.contents.length - 1 ? (index += 1) : (index = 0)
+            this.index < this.contents.length - 1
+              ? (this.index += 1)
+              : (this.index = 0)
           );
-          this.changeContent(index);
+          this.changeContent(this.index);
         };
       }
     },
@@ -142,7 +150,7 @@ export default {
       this.tools = this.contents[index].tools;
     }
   },
-  mounted() {
+  beforeUpdate() {
     this.$nextTick(() => {
       this.button(0);
     });

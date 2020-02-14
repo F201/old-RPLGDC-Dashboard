@@ -60,7 +60,7 @@
     .v-card__title
       font-size: 55px
       font-family: $raleway
-      @media only screen and (max-width: 500px)
+      @media only screen and (max-width: 860px)
         font-size: 32px
         word-break: break-word
 
