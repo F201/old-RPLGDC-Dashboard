@@ -240,7 +240,9 @@
                   cols="30"
                   rows="10"
                   v-model="portfolio"
-                  placeholder="ex. https://github.com/F201, https://medium.com/rplgdc-laboratory, https://github.com/ajipsantoso, https://dribbble.com/galihtrenggala"
+                  placeholder="Note: jika tidak ada, tulis 'Tidak Ada'
+  example: 
+  https://github.com/F201, https://medium.com/rplgdc-laboratory, https://github.com/ajipsantoso, https://dribbble.com/galihtrenggala, https://drive.google.com/.../view"
                 ></textarea>
                 <div class="text-center mt-4">
                   <v-btn class="prev-button" depressed text @click="prevStep()"
@@ -408,6 +410,8 @@
                       <v-btn
                         :disabled="dialog"
                         :loading="dialog"
+                        depressed
+                        text
                         class="white--text"
                         @click="submit()"
                       >
@@ -455,10 +459,15 @@
                 MB</v-card-text
               >
             </template>
-            <template v-else>
+            <template v-else-if="jpgAlert == true">
               <v-card-text
                 >Please only upload jpg / jpeg file or a file with less than 500
                 KB</v-card-text
+              >
+            </template>
+            <template v-else>
+              <v-card-text
+                >Please fill in the form before continuing</v-card-text
               >
             </template>
             <v-card-actions>
@@ -553,6 +562,7 @@ export default {
       dialog: false,
       alert: false,
       pdfAlert: false,
+      jpgAlert: false,
       birthdate: new Date().toISOString().substr(0, 10),
       calendar: false,
       name: "",
@@ -589,13 +599,19 @@ export default {
           this.divisi == "" ||
           this.cvName == ""
         ) {
-          alert("Please fill in the form before continuing");
+          // alert("Please fill in the form before continuing");
+          this.alert = true;
+          this.pdfAlert = false;
+          this.jpgAlert = false;
         } else {
           this.steps += 1;
         }
       } else {
         if (this.motivationName == "" || this.portfolio == "") {
-          alert("Please fill in the form before continuing");
+          // alert("Please fill in the form before continuing");
+          this.alert = true;
+          this.pdfAlert = false;
+          this.jpgAlert = false;
         } else {
           this.steps += 1;
         }
@@ -616,6 +632,7 @@ export default {
         // alert("Please upload file with extensions .pdf only");
         this.alert = true;
         this.pdfAlert = true;
+        this.jpgAlert = false;
         file.value = "";
         this.fileCv = null;
         this.cvName = "";
@@ -625,6 +642,7 @@ export default {
           // alert("Please upload file size less than 1 MB");
           this.alert = true;
           this.pdfAlert = true;
+          this.jpgAlert = false;
           file.value = "";
           this.fileCv = null;
           this.cvName = "";
@@ -646,6 +664,7 @@ export default {
         file.value = "";
         this.alert = true;
         this.pdfAlert = true;
+        this.jpgAlert = false;
         this.motivation = null;
         this.motivationName = "";
         return false;
@@ -655,6 +674,7 @@ export default {
           file.value = "";
           this.alert = true;
           this.pdfAlert = true;
+          this.jpgAlert = false;
           this.motivation = null;
           this.motivationName = "";
           return false;
@@ -677,6 +697,8 @@ export default {
         // alert("Please upload file with extensions .jpeg/.jpg only");
         file.value = "";
         this.alert = true;
+        this.pdfAlert = false;
+        this.jpgAlert = true;
         this.image = null;
         this.imagePreview = null;
         imageContainer[0].style.backgroundImage = "";
@@ -686,6 +708,8 @@ export default {
           // alert("Please upload file size less than 1 MB");
           file.value = "";
           this.alert = true;
+          this.pdfAlert = false;
+          this.jpgAlert = true;
           this.image = null;
           this.imagePreview = null;
           imageContainer[0].style.backgroundImage = "";
@@ -758,11 +782,11 @@ export default {
 
 <style lang="sass" scoped>
 \::-webkit-input-placeholder
-  /* Edge
+  //Edge
   color: #BABABA
 
 \:-ms-input-placeholder
-  /* Internet Explorer 10-11
+  // Internet Explorer 10-11
   color: #BABABA
 
 \::placeholder
@@ -1059,6 +1083,9 @@ h1, label, .v-btn
   input, select, textarea
     background-color: #F2F2F2
     border-radius: 5px
+
+  textarea
+    padding: 5px 7px
 
   h1
     text-align: center
