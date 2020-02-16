@@ -177,6 +177,7 @@ export default {
     .carousel__content--name
       font-family: $raleway
       font-size: 22px
+      word-break: break-word
 
     .carousel__content--year
       font-family: $roboto
