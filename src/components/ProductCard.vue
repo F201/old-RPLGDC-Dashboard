@@ -31,6 +31,6 @@ export default {
   background: $orange-gradient
   border-radius: 11px
 
-.v-card-title
-  font-size: 28px
+.v-card__title
+  word-break: break-word
 </style>

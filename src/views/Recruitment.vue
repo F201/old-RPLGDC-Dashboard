@@ -455,13 +455,13 @@
             <v-card-title class="headline">Attention</v-card-title>
             <template v-if="pdfAlert == true">
               <v-card-text
-                >Please only upload pdf file or a file with less than 1
+                >Please only upload pdf file with less than 1
                 MB</v-card-text
               >
             </template>
             <template v-else-if="jpgAlert == true">
               <v-card-text
-                >Please only upload jpg / jpeg file or a file with less than 500
+                >Please only upload jpg / jpeg file with less than 500
                 KB</v-card-text
               >
             </template>
