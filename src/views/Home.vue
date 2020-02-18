@@ -28,6 +28,7 @@
                 width="503px"
                 height="503px"
                 contain
+                eager
               ></v-img>
               <TextPlaceholder
                 :header="detail.header"

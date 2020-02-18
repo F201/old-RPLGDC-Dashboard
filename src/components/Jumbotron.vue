@@ -2,11 +2,13 @@
   <v-img
     :src="require(`@/assets/${this.$route.name}/jumbotron.png`)"
     class="jumbotron"
+    eager
   >
     <TopToolbar />
     <v-img
       :src="require(`@/assets/${this.$route.name}/jumbotron_bottom.png`)"
       class="jumbotron__content d-flex align-center"
+      eager
     >
       <div
         class="jumbotron__content--wrapper d-flex align-center justify-center flex-column"
