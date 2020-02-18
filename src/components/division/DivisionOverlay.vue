@@ -2,7 +2,7 @@
   <!-- <v-overlay :value="overlay" class="px-12"> -->
   <v-overlay :value="overlay">
     <div class="overlay-content d-md-flex justify-md-center align-md-center">
-      <v-card light>
+      <v-card light max-width="974px">
         <v-btn icon @click="overlay = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
