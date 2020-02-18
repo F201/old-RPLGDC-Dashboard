@@ -31,6 +31,7 @@ export default {
       commit("LOADING");
       return api.recruitment.getDetailNim(data).then(({ data }) => {
         commit("LOADED");
+        console.log(data);
         return data;
       });
       // .catch(err => {
