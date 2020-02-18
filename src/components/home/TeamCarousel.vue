@@ -10,7 +10,7 @@
       class="mx-auto"
       hide-delimiters
     >
-      <v-carousel-item v-for="(chunk, index) in chunks" :key="index">
+      <v-carousel-item v-for="(chunk, index) in chunks" :key="index" eager>
         <div class="carousel__bg pa-6 pb-12 white">
           <v-row
             class="fill-height d-flex justify-space-around flex-column flex-sm-row"

@@ -1,5 +1,8 @@
 <template>
-  <div :class="`register__wrapper register__wrapper--${steps}`">
+  <div
+    :class="`register__wrapper register__wrapper--${steps}`"
+    v-if="close == false"
+  >
     <div class="register__container">
       <a href="/">
         <div class="register__header mb-5 d-flex">
@@ -455,8 +458,7 @@
             <v-card-title class="headline">Attention</v-card-title>
             <template v-if="pdfAlert == true">
               <v-card-text
-                >Please only upload pdf file with less than 1
-                MB</v-card-text
+                >Please only upload pdf file with less than 1 MB</v-card-text
               >
             </template>
             <template v-else-if="jpgAlert == true">
@@ -486,6 +488,20 @@
         </v-dialog>
       </v-row>
     </template>
+  </div>
+  <div v-else class="register__container mb-0">
+    <a href="/">
+      <div class="mb-2 d-flex">
+        <v-img
+          src="../../src/assets/icon.png"
+          width="32px"
+          height="32px"
+        ></v-img>
+        <span class="align-self-center ml-2">RPL-GDC</span>
+      </div>
+    </a>
+    <h1>WE'RE VERY SORRY, BUT RPL-GDC RECRUITMENT PHASE HAS ALREADY ENDED</h1>
+    <v-btn to="/" depressed text class="white--text mt-2">BACK TO HOME</v-btn>
   </div>
 </template>
 
@@ -578,7 +594,8 @@ export default {
       imagePreview: null,
       fileCv: null,
       motivation: null,
-      image: null
+      image: null,
+      close: false
     };
   },
   computed: {
@@ -771,6 +788,14 @@ export default {
             });
           } else this.$swal("Error", "Error registrasi!", "error");
         });
+    }
+  },
+
+  created() {
+    let now = new Date();
+    let deadline = new Date("Feb 18 2020 23:59:59");
+    if (now > deadline) {
+      this.close = true;
     }
   },
 
