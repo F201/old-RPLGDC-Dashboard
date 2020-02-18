@@ -2,18 +2,18 @@
   <!-- <v-overlay :value="overlay" class="px-12"> -->
   <v-overlay :value="overlay">
     <div class="overlay-content d-md-flex justify-md-center align-md-center">
-      <v-card light max-width="974px">
+      <v-card light>
         <v-btn icon @click="overlay = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-card-title class="justify-center pb-8 pt-md-8 pt-12">
+        <v-card-title class="justify-center pb-8 mt-md-7 mt-11">
           <span class="text-uppercase">
             {{ divisionName }} DIVISION ACTIVITY
           </span>
         </v-card-title>
         <div class="content-wrapper mx-sm-12">
           <div
-            class="content-container--main d-flex flex-md-nowrap flex-wrap justify-center"
+            class="content-container--main d-flex flex-md-nowrap flex-wrap justify-center mb-3"
             v-for="(activity, index) in activities"
             :key="index"
           >
@@ -21,9 +21,11 @@
               :src="activity.gambar_activities"
               max-width="350px"
               max-height="199px"
+              height="199px"
               contain
+              eager
             ></v-img>
-            <div class="content-text mx-md-4 mx-0 mt-3 mt-sm-0">
+            <div class="content-text mx-md-4 mx-0 my-3 my-sm-0">
               <p class="content-text__title text-uppercase">
                 {{ activity.nama_activities }}
               </p>
@@ -52,14 +54,14 @@
             </div>
           </div> -->
         </div>
-        <v-card-title class="justify-center pt-8 pb-6"
+        <v-card-title class="justify-center pb-6"
           >TOOL AND FRAMEWORK</v-card-title
         >
         <div
           class="content-wrapper mx-sm-12 mx-3 pb-8 d-flex justify-space-around flex-wrap"
         >
           <div
-            class="content-container d-flex flex-column align-center"
+            class="content-container mb-3 mx-3 mx-sm-0 d-flex flex-column align-center"
             v-for="(tool, index) in tools"
             :key="index"
           >
@@ -67,6 +69,7 @@
               :src="tool.gambar_tools"
               max-width="84.5px"
               max-height="84.5px"
+              height="84.5px"
               contain
               eager
             ></v-img>
@@ -104,6 +107,8 @@
     font-family: $raleway
     word-break: break-word
     text-align: center
+    @media only screen and (max-width: 768px)
+      font-size: 26px
 
 .content-wrapper
   .content-container--main
@@ -113,12 +118,16 @@
         font-family: $raleway
         font-size: 22px
         color: $orange-color
+
+      .content-text__title, .content-text__desc
         word-break: break-all
 
   .tool-text
     font-family: $raleway
     font-size: 15px
     word-break: break-word
+    max-width: 100px
+    text-align: center
 </style>
 
 <style scoped>

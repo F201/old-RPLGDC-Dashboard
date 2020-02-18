@@ -13,15 +13,19 @@
       <v-carousel-item
         v-for="(achievement, index) in achievements"
         :key="index"
+        eager
       >
         <div class="carousel__bg pa-6 pt-0 pb-12 pt-sm-6 white">
-          <v-row class="fill-height d-flex flex-wrap" justify="center">
+          <v-row
+            class="fill-height d-flex flex-wrap flex-md-nowrap"
+            justify="center"
+          >
             <v-img
               :src="achievement.foto_achievement"
               :eager="true"
               max-width="537px"
-              max-height="342px"
-              height="342px"
+              max-height="332px"
+              height="332px"
               class="align-self-start"
               contain
             ></v-img>
@@ -36,9 +40,9 @@
                 <div
                   class="carousel__content--product mt-8 d-flex align-center"
                 >
-                  <v-icon size="24px" color="white" class="mr-2 pa-2">
-                    mdi-package-variant
-                  </v-icon>
+                  <v-icon size="24px" color="white" class="mr-2 pa-2"
+                    >mdi-package-variant</v-icon
+                  >
                   <div class="product__title">{{ achievement.judul }}</div>
                 </div>
                 <div class="carousel__content--team d-flex mt-3">
@@ -62,12 +66,13 @@
                         >&bull;</span
                       >
                       <v-list-item-content>
-                        <v-list-item-title>
-                          {{ member.nama_member }}
-                        </v-list-item-title>
-                        <v-list-item-subtitle>
-                          {{ member.jurusan }} / {{ member.angkatan }}
-                        </v-list-item-subtitle>
+                        <v-list-item-title>{{
+                          member.nama_member
+                        }}</v-list-item-title>
+                        <v-list-item-subtitle
+                          >{{ member.jurusan }} /
+                          {{ member.angkatan }}</v-list-item-subtitle
+                        >
                       </v-list-item-content>
                     </v-list-item>
                   </v-list>

@@ -22,6 +22,8 @@
                     <v-img
                       :src="content.gambar_products"
                       max-width="338px"
+                      max-height="338px"
+                      height="338px"
                       contain
                       eager
                     ></v-img>
@@ -47,13 +49,18 @@
                   Tool & Framework
                 </div>
                 <div
-                  class="product__details--tools d-flex flex-wrap align-center"
+                  class="product__details--tools d-flex flex-wrap justify-center justify-sm-start align-center mt-3"
                 >
-                  <div class="mx-3" v-for="(tool, index) in tools" :key="index">
+                  <div
+                    class="mx-3 mb-3"
+                    v-for="(tool, index) in tools"
+                    :key="index"
+                  >
                     <v-img
                       :src="tool.gambar_tools"
                       max-width="84.5px"
                       max-height="84.5px"
+                      height="84.5px"
                       contain
                     ></v-img>
                     <div class="tool-text text-center">
