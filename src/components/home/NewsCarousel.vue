@@ -10,7 +10,7 @@
       class="mx-auto"
       hide-delimiters
     >
-      <v-carousel-item v-for="(item, index) in news" :key="index" eager>
+      <v-carousel-item v-for="(item, index) in news" :key="index">
         <div class="pa-6 pt-sm-6 white">
           <v-row class="fill-height d-flex flex-wrap" justify="center">
             <v-img
