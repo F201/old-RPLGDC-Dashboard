@@ -98,7 +98,8 @@
           <div class="mt-3">
             <label>Interview Form</label>
             <div class="mt-2">
-              Please fill in the <a href="http://bit.ly/wawancara_RPLGDC20">interview form</a>
+              Please fill in the
+              <a href="http://bit.ly/wawancara_RPLGDC20">interview form</a>
             </div>
           </div>
         </template>
@@ -143,7 +144,7 @@ export default {
       result: false,
       loading: false,
       close: false,
-      tahap1: null
+      tahap1: {}
     };
   },
   created() {
