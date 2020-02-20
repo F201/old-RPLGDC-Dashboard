@@ -143,7 +143,7 @@ export default {
       result: false,
       loading: false,
       close: false,
-      tahap1: null
+      tahap1: {}
     };
   },
   created() {
