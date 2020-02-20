@@ -14,9 +14,9 @@
       <div class="register__title">RECRUITMENT</div>
       <v-stepper id="no-bg" :value="steps" alt-labels>
         <v-stepper-header>
-          <v-stepper-step step="1" color="#F0793C" :complete="steps > 1"
-            >Profile Form</v-stepper-step
-          >
+          <v-stepper-step step="1" color="#F0793C" :complete="steps > 1">
+            Profile Form
+          </v-stepper-step>
 
           <v-divider></v-divider>
 
