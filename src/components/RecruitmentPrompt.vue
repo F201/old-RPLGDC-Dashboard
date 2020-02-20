@@ -12,7 +12,12 @@
         <v-btn class="white--text" depressed text @click="check = true"
           >CHECK REGISTRATION STATUS</v-btn
         >
-        <v-btn class="white--text mt-6" depressed text to="/recruitment"
+        <v-btn
+          class="white--text mt-6"
+          depressed
+          text
+          to="/recruitment"
+          v-if="close == false"
           >REGISTER NOW</v-btn
         >
       </template>
@@ -144,6 +149,13 @@ export default {
       close: false,
       tahap1: {}
     };
+  },
+  created() {
+    let now = new Date();
+    let deadline = new Date("Feb 18 2020 23:59:59");
+    if (now > deadline) {
+      this.close = true;
+    }
   },
   methods: {
     closeDialog() {
