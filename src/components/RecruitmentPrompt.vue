@@ -1,8 +1,9 @@
 <template>
-  <v-dialog v-model="dialog" width="500">
+  <v-dialog v-model="dialog" width="550">
     <template v-slot:activator="{ on }">
       <v-btn class="join-button__container ml-3 white" v-on="on" text>
-        <span class="join-button">JOIN US</span>
+        <!-- <span class="join-button">JOIN US</span> -->
+        <span class="join-button">STATUS</span>
       </v-btn>
     </template>
 
@@ -35,7 +36,9 @@
           >
         </div>
         <v-btn class="float-button back-button" icon @click="check = false">
-          <v-icon>mdi-chevron-left</v-icon>
+          <v-icon>
+            mdi-chevron-left
+          </v-icon>
         </v-btn>
       </template>
 
@@ -77,7 +80,39 @@
             />
           </label>
         </div>
-        <span id="coba"></span>
+        <template v-if="tahap1.data == 'pass'">
+          <div class="mt-3">
+            <label>Status</label>
+            <div class="mt-2">
+              <span
+                class="py-1 px-2 green white--text"
+                style="border-radius: 5px;"
+                >Congratulation!</span
+              >
+              You've passed the 1<sup>st</sup> registration phase
+            </div>
+          </div>
+          <div class="mt-3">
+            <label>Interview Form</label>
+            <div class="mt-2">
+              Please fill in the
+              <a href="http://bit.ly/wawancara_RPLGDC20">interview form</a>
+            </div>
+          </div>
+        </template>
+        <template v-else>
+          <div class="mt-3">
+            <label>Status</label>
+            <div class="mt-2">
+              <span
+                class="py-1 px-2 red white--text"
+                style="border-radius: 5px;"
+                >We're sorry</span
+              >
+              You didn't pass the 1<sup>st</sup> registration phase
+            </div>
+          </div>
+        </template>
         <v-btn
           class="float-button back-button"
           icon
@@ -104,7 +139,9 @@ export default {
       nimInput: "",
       user: null,
       result: false,
-      loading: false
+      loading: false,
+      close: false,
+      tahap1: {}
     };
   },
   methods: {
@@ -125,6 +162,13 @@ export default {
               this.user = data.data;
               this.check = false;
               this.result = true;
+              this.$store
+                .dispatch("recruitment/getTahap1", this.nimInput)
+                .then(data => {
+                  if (data.msg === "success") {
+                    this.tahap1 = data;
+                  }
+                });
             } else {
               document.getElementById("input-nim").style.border =
                 "2px red solid";

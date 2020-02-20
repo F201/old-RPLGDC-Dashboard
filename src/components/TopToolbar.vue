@@ -10,7 +10,7 @@
     <v-btn to="/" class="icon-link" depressed text color="transparent">
       <img src="@/assets/icon.png" alt="icon.png" />
       <v-toolbar-title>
-        <span class="mx-2 font-weight-bold white--text">RPL - GDC</span>
+        <span class="mx-sm-2 font-weight-bold white--text">RPL - GDC</span>
       </v-toolbar-title>
     </v-btn>
     <v-spacer></v-spacer>
