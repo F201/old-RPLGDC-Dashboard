@@ -6,5 +6,8 @@ export default {
   },
   getDetailNim(nim) {
     return ApiGeneral.get(`/recruitment/checkstatus/${nim}`);
+  },
+  getTahap1(nim) {
+    return ApiGeneral.get(`/recruitment/status1/${nim}`);
   }
 };

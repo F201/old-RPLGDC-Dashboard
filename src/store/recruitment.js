@@ -38,6 +38,13 @@ export default {
       // console.log(err);
       // return err.response.data;
       // });
+    },
+    getTahap1({ commit }, data) {
+      commit("LOADING");
+      return api.recruitment.getTahap1(data).then(({ data }) => {
+        commit("LOADED");
+        return data;
+      });
     }
   },
   getters: {
