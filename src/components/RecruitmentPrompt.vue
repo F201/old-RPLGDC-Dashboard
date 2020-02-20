@@ -90,8 +90,9 @@
               <span
                 class="py-1 px-2 green white--text"
                 style="border-radius: 5px;"
-                >Congratulation!</span
               >
+                Congratulation!
+              </span>
               You've passed the 1<sup>st</sup> registration phase
             </div>
           </div>
