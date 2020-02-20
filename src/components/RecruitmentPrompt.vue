@@ -41,7 +41,9 @@
           >
         </div>
         <v-btn class="float-button back-button" icon @click="check = false">
-          <v-icon>mdi-chevron-left</v-icon>
+          <v-icon>
+            mdi-chevron-left
+          </v-icon>
         </v-btn>
       </template>
 
