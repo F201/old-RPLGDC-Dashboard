@@ -9,7 +9,7 @@
           class="game-container d-flex justify-center align-center white--text"
         >
           <span class="px-3">
-            Sorry, You need a PC to be able to play this game
+            Please use a desktop to play the game
           </span>
         </div>
       </template>
