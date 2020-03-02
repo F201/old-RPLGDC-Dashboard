@@ -9,7 +9,12 @@
 
     <v-card class="d-flex flex-column pa-12">
       <template v-if="check == false && result == false">
-        <v-btn class="white--text" depressed text @click="check = true"
+        <v-btn
+          class="white--text"
+          depressed
+          text
+          @click="check = true"
+          to="/play-game"
           >CHECK REGISTRATION STATUS</v-btn
         >
         <v-btn
