@@ -21,13 +21,14 @@
           “Have the courage to follow your heart and intuition. They somehow
           know what you truly want to become.” <br />- Steve Jobs
         </div>
-        <!-- <v-btn
+        <v-btn
           class="jumbotron__content--button mt-4 white"
           v-show="this.$route.path === '/'"
           text
+          to="/play-game"
         >
           <span class="jumbotron__content--button-text">PLAY OUR GAME</span>
-        </v-btn> -->
+        </v-btn>
         <v-btn
           class="jumbotron__content--button mt-12 white"
           v-show="this.$route.path === '/'"

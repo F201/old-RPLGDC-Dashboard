@@ -10,6 +10,7 @@
         :key="i"
         :src="item.gambar_activities"
         :alt="item.nama_activities"
+        eager
       >
         <div class="overlay-content__container d-flex flex-wrap">
           <div

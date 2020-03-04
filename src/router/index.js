@@ -5,6 +5,7 @@ import Division from "../views/Division.vue";
 import Product from "../views/Product.vue";
 import ProductDetails from "../views/ProductDetails.vue";
 import Recruitment from "../views/Recruitment.vue";
+import PlayGame from "../views/PlayGame.vue";
 
 Vue.use(VueRouter);
 
@@ -38,6 +39,11 @@ const routes = [
     path: "/recruitment",
     name: "recruitment",
     component: Recruitment
+  },
+  {
+    path: "/play-game",
+    name: "play-game",
+    component: PlayGame
   }
 ];
 
