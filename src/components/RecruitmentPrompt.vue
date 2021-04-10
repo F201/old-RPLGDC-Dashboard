@@ -157,7 +157,7 @@ export default {
   },
   created() {
     let now = new Date();
-    let deadline = new Date("Feb 18 2020 23:59:59");
+    let deadline = this.$store.state.recruitment.deadline;
     if (now > deadline) {
       this.close = true;
     }
