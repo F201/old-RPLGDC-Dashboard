@@ -3,7 +3,8 @@ import api from "../api/api";
 export default {
   namespaced: true,
   state: {
-    loading: false
+    loading: false,
+    deadline: new Date("Apr 18 2021 23:59:59")
   },
   mutations: {
     LOADING(state) {

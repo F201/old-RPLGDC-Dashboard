@@ -176,23 +176,46 @@
                     <span class="radio__check"></span>
                   </label>
                 </div>
+                <div class="mt-4">
+                  <label>Divisi</label>
+                </div>
+                <div
+                  class="angkatan__container d-flex flex-sm-row flex-column justify-sm-space-between"
+                >
+                  <label
+                    v-for="data in [{id:'rpl', name:'Software Development'},{id:'gdc',name:'Game Development'}]"
+                    :key="data.id+'divisi'"
+                    :for="data.id+'divisi'"
+                    class="radio__container radio__item radio__item--generation mb-sm-0 mb-3"
+                  >
+                    {{ data.name }}
+                    <input
+                      type="radio"
+                      name="divisi"
+                      :id="data.id+'divisi'"
+                      :value="data.id"
+                      v-model="divisi"
+                    />
+                    <span class="radio__check"></span>
+                  </label>
+                </div>
                 <div class="mt-3">
                   <label>Division</label>
                 </div>
                 <div class="divisi__container">
                   <label
-                    v-for="(divisions, index) in division"
+                    v-for="(divisions, index) in roles.filter(item => (item.type == divisi))"
                     :key="index"
                     :for="divisions.value"
                     class="radio__container radio__item radio__item--divisi d-flex justify-space-between"
                   >
-                    {{ divisions.name }}
+                      {{ divisions.name }}
                     <input
                       type="radio"
-                      name="divisi"
+                      name="role"
                       :id="divisions.value"
                       :value="divisions.value"
-                      v-model="divisi"
+                      v-model="role"
                     />
                     <div>
                       <v-img
@@ -546,32 +569,37 @@ export default {
         "S1 Creative Arts",
         "S1 Terapa Teknologi Rekayasa Multimedia"
       ],
-      generation: ["2017", "2018", "2019"],
-      division: [
+      generation: [1,2,3].map(item =>((new Date()).getFullYear() - item)).reverse(),
+      roles: [
         {
           name: "Mobile Developer",
           value: "mobile",
-          icon: require("@/assets/mobile.png")
+          icon: require("@/assets/mobile.png"),
+          type:'rpl'
         },
         {
           name: "Front-End Developer",
           value: "frontend",
-          icon: require("@/assets/web.png")
+          icon: require("@/assets/web.png"),
+          type:'rpl'
         },
         {
           name: "Back-End Developer",
           value: "backend",
-          icon: require("@/assets/web.png")
+          icon: require("@/assets/web.png"),
+          type:'rpl'
         },
         {
           name: "Game Developer",
           value: "gdc",
-          icon: require("@/assets/game.png")
+          icon: require("@/assets/game.png"),
+          type:'gdc'
         },
         {
           name: "UI/UX Designer",
           value: "uiux",
-          icon: require("@/assets/uiux.png")
+          icon: require("@/assets/uiux.png"),
+          type:'rpl'
         }
       ],
       steps: 1,
@@ -588,6 +616,7 @@ export default {
       genderType: "",
       year: "",
       divisi: "",
+      role:'',
       portfolio: "",
       cvName: "",
       motivationName: "",
@@ -605,7 +634,7 @@ export default {
   },
   created() {
     let now = new Date();
-    let deadline = new Date("Feb 18 2020 23:59:59");
+    let deadline = this.$store.state.recruitment.deadline
     if (now > deadline) {
       this.close = true;
     }
@@ -776,6 +805,7 @@ export default {
       fileData.append("jurusan", this.major);
       fileData.append("angkatan", this.year);
       fileData.append("divisi", this.divisi);
+      fileData.append("role", this.role);
       fileData.append("foto_profile", this.image);
       fileData.append("cv", this.fileCv);
       fileData.append("motivation_letter", this.motivation);
