@@ -204,12 +204,14 @@
                 </div>
                 <div class="divisi__container">
                   <label
-                    v-for="(divisions, index) in roles.filter(item => (item.type == divisi))"
+                    v-for="(divisions, index) in roles.filter(
+                      item => item.type == divisi
+                    )"
                     :key="index"
                     :for="divisions.value"
-                    class="radio__container radio__item radio__item--divisi d-flex justify-space-between"
+                    class="radio__container radio__item radio__item--role d-flex justify-space-between"
                   >
-                      {{ divisions.name }}
+                    {{ divisions.name }}
                     <input
                       type="radio"
                       name="role"
@@ -580,7 +582,9 @@ export default {
         "S1 Creative Arts",
         "S1 Terapa Teknologi Rekayasa Multimedia"
       ],
-      generation: [1,2,3].map(item =>((new Date()).getFullYear() - item)).reverse(),
+      generation: [1, 2, 3]
+        .map(item => new Date().getFullYear() - item)
+        .reverse(),
       roles: [
         {
           name: "Mobile Developer",
@@ -645,7 +649,7 @@ export default {
       genderType: "",
       year: "",
       divisi: "",
-      role:'',
+      role: "",
       portfolio: "",
       cvName: "",
       motivationName: "",
@@ -663,7 +667,7 @@ export default {
   },
   created() {
     let now = new Date();
-    let deadline = this.$store.state.recruitment.deadline
+    let deadline = this.$store.state.recruitment.deadline;
     if (now > deadline) {
       this.close = true;
     }
@@ -1017,7 +1021,7 @@ h1, label, .v-btn
       padding-left: 45px
       padding-right: 25px
 
-  .radio__item--divisi
+  .radio__item--role
     margin-bottom: 15px
     .radio__selected
       background: $orange-gradient
