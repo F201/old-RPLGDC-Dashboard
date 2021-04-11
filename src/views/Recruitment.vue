@@ -183,24 +183,24 @@
                   class="angkatan__container d-flex flex-sm-row flex-column justify-sm-space-between"
                 >
                   <label
-                    v-for="data in [{id:'rpl', name:'Software Development'},{id:'gdc',name:'Game Development'}]"
-                    :key="data.id+'divisi'"
-                    :for="data.id+'divisi'"
+                    v-for="data in [{name:'RPL'},{name:'GDC'}]"
+                    :key="data.name+'divisi'"
+                    :for="data.name+'divisi'"
                     class="radio__container radio__item radio__item--generation mb-sm-0 mb-3"
                   >
                     {{ data.name }}
                     <input
                       type="radio"
                       name="divisi"
-                      :id="data.id+'divisi'"
-                      :value="data.id"
+                      :id="data.name+'divisi'"
+                      :value="data.name"
                       v-model="divisi"
                     />
                     <span class="radio__check"></span>
                   </label>
                 </div>
                 <div class="mt-3">
-                  <label>Division</label>
+                  <label>Role</label>
                 </div>
                 <div class="divisi__container">
                   <label
@@ -383,6 +383,17 @@
                   id="output-divisi"
                   class="output"
                   v-model="divisi"
+                  disabled
+                />
+                <div class="mt-4">
+                  <label for="output-role">Role</label>
+                </div>
+                <input
+                  type="text"
+                  name="output-role"
+                  id="output-role"
+                  class="output"
+                  :value="roles.filter(item => (item.value == role)).length > 0 ? roles.filter(item => (item.value == role))[0].name : null"
                   disabled
                 />
                 <div class="mt-4">
@@ -575,31 +586,49 @@ export default {
           name: "Mobile Developer",
           value: "mobile",
           icon: require("@/assets/mobile.png"),
-          type:'rpl'
+          type:'RPL'
         },
         {
           name: "Front-End Developer",
           value: "frontend",
           icon: require("@/assets/web.png"),
-          type:'rpl'
+          type:'RPL'
         },
         {
           name: "Back-End Developer",
           value: "backend",
           icon: require("@/assets/web.png"),
-          type:'rpl'
+          type:'RPL'
         },
         {
           name: "Game Developer",
-          value: "gdc",
+          value: "game_developer",
           icon: require("@/assets/game.png"),
-          type:'gdc'
+          type:'GDC'
+        },
+        {
+          name: "Audio Composer",
+          value: "audio_composer",
+          icon: require("@/assets/game.png"),
+          type:'GDC'
+        },
+        {
+          name: "Game Designer",
+          value: "game_designer",
+          icon: require("@/assets/game.png"),
+          type:'GDC'
+        },
+        {
+          name: "Game Artist",
+          value: "game_artist",
+          icon: require("@/assets/game.png"),
+          type:'GDC'
         },
         {
           name: "UI/UX Designer",
           value: "uiux",
           icon: require("@/assets/uiux.png"),
-          type:'rpl'
+          type:'RPL'
         }
       ],
       steps: 1,
@@ -990,6 +1019,9 @@ h1, label, .v-btn
 
   .radio__item--divisi
     margin-bottom: 15px
+    .radio__selected
+      background: $orange-gradient
+      color: white
 
   .radio__selected
     background: $orange-gradient
