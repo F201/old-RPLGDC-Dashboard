@@ -179,20 +179,18 @@
                 <div class="mt-4">
                   <label>Divisi</label>
                 </div>
-                <div
-                  class="angkatan__container d-flex flex-sm-row flex-column justify-sm-space-between"
-                >
+                <div class="angkatan__container d-flex">
                   <label
-                    v-for="data in [{name:'RPL'},{name:'GDC'}]"
-                    :key="data.name+'divisi'"
-                    :for="data.name+'divisi'"
-                    class="radio__container radio__item radio__item--generation mb-sm-0 mb-3"
+                    v-for="data in [{ name: 'RPL' }, { name: 'GDC' }]"
+                    :key="data.name + 'divisi'"
+                    :for="data.name + 'divisi'"
+                    class="radio__container radio__item radio__item--division mb-sm-0 mb-3 mx-1 flex-grow-1 text-center"
                   >
                     {{ data.name }}
                     <input
                       type="radio"
                       name="divisi"
-                      :id="data.name+'divisi'"
+                      :id="data.name + 'divisi'"
                       :value="data.name"
                       v-model="divisi"
                     />
@@ -395,7 +393,11 @@
                   name="output-role"
                   id="output-role"
                   class="output"
-                  :value="roles.filter(item => (item.value == role)).length > 0 ? roles.filter(item => (item.value == role))[0].name : null"
+                  :value="
+                    roles.filter(item => item.value == role).length > 0
+                      ? roles.filter(item => item.value == role)[0].name
+                      : null
+                  "
                   disabled
                 />
                 <div class="mt-4">
@@ -590,49 +592,49 @@ export default {
           name: "Mobile Developer",
           value: "mobile",
           icon: require("@/assets/mobile.png"),
-          type:'RPL'
+          type: "RPL"
         },
         {
           name: "Front-End Developer",
           value: "frontend",
           icon: require("@/assets/web.png"),
-          type:'RPL'
+          type: "RPL"
         },
         {
           name: "Back-End Developer",
           value: "backend",
           icon: require("@/assets/web.png"),
-          type:'RPL'
+          type: "RPL"
         },
         {
-          name: "Game Developer",
-          value: "game_developer",
+          name: "Game Programmer",
+          value: "gp",
           icon: require("@/assets/game.png"),
-          type:'GDC'
+          type: "GDC"
         },
         {
           name: "Audio Composer",
-          value: "audio_composer",
+          value: "ac",
           icon: require("@/assets/game.png"),
-          type:'GDC'
+          type: "GDC"
         },
         {
           name: "Game Designer",
-          value: "game_designer",
+          value: "gd",
           icon: require("@/assets/game.png"),
-          type:'GDC'
+          type: "GDC"
         },
         {
           name: "Game Artist",
-          value: "game_artist",
+          value: "ga",
           icon: require("@/assets/game.png"),
-          type:'GDC'
+          type: "GDC"
         },
         {
           name: "UI/UX Designer",
           value: "uiux",
           icon: require("@/assets/uiux.png"),
-          type:'RPL'
+          type: "RPL"
         }
       ],
       steps: 1,
@@ -837,8 +839,8 @@ export default {
       fileData.append("jenis_kelamin", this.genderType);
       fileData.append("jurusan", this.major);
       fileData.append("angkatan", this.year);
-      fileData.append("divisi", this.divisi);
-      fileData.append("role", this.role);
+      fileData.append("divisi", this.role);
+      // fileData.append("role", this.role);
       fileData.append("foto_profile", this.image);
       fileData.append("cv", this.fileCv);
       fileData.append("motivation_letter", this.motivation);
