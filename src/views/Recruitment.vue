@@ -179,37 +179,37 @@
                 <div class="mt-4">
                   <label>Divisi</label>
                 </div>
-                <div
-                  class="angkatan__container d-flex flex-sm-row flex-column justify-sm-space-between"
-                >
+                <div class="angkatan__container d-flex">
                   <label
-                    v-for="data in [{id:'rpl', name:'Software Development'},{id:'gdc',name:'Game Development'}]"
-                    :key="data.id+'divisi'"
-                    :for="data.id+'divisi'"
-                    class="radio__container radio__item radio__item--generation mb-sm-0 mb-3"
+                    v-for="data in [{ name: 'RPL' }, { name: 'GDC' }]"
+                    :key="data.name + 'divisi'"
+                    :for="data.name + 'divisi'"
+                    class="radio__container radio__item radio__item--division mb-sm-0 mb-3 mx-1 flex-grow-1 text-center"
                   >
                     {{ data.name }}
                     <input
                       type="radio"
                       name="divisi"
-                      :id="data.id+'divisi'"
-                      :value="data.id"
+                      :id="data.name + 'divisi'"
+                      :value="data.name"
                       v-model="divisi"
                     />
                     <span class="radio__check"></span>
                   </label>
                 </div>
                 <div class="mt-3">
-                  <label>Division</label>
+                  <label>Role</label>
                 </div>
                 <div class="divisi__container">
                   <label
-                    v-for="(divisions, index) in roles.filter(item => (item.type == divisi))"
+                    v-for="(divisions, index) in roles.filter(
+                      item => item.type == divisi
+                    )"
                     :key="index"
                     :for="divisions.value"
-                    class="radio__container radio__item radio__item--divisi d-flex justify-space-between"
+                    class="radio__container radio__item radio__item--role d-flex justify-space-between"
                   >
-                      {{ divisions.name }}
+                    {{ divisions.name }}
                     <input
                       type="radio"
                       name="role"
@@ -383,6 +383,21 @@
                   id="output-divisi"
                   class="output"
                   v-model="divisi"
+                  disabled
+                />
+                <div class="mt-4">
+                  <label for="output-role">Role</label>
+                </div>
+                <input
+                  type="text"
+                  name="output-role"
+                  id="output-role"
+                  class="output"
+                  :value="
+                    roles.filter(item => item.value == role).length > 0
+                      ? roles.filter(item => item.value == role)[0].name
+                      : null
+                  "
                   disabled
                 />
                 <div class="mt-4">
@@ -569,37 +584,57 @@ export default {
         "S1 Creative Arts",
         "S1 Terapa Teknologi Rekayasa Multimedia"
       ],
-      generation: [1,2,3].map(item =>((new Date()).getFullYear() - item)).reverse(),
+      generation: [1, 2, 3]
+        .map(item => new Date().getFullYear() - item)
+        .reverse(),
       roles: [
         {
           name: "Mobile Developer",
           value: "mobile",
           icon: require("@/assets/mobile.png"),
-          type:'rpl'
+          type: "RPL"
         },
         {
           name: "Front-End Developer",
           value: "frontend",
           icon: require("@/assets/web.png"),
-          type:'rpl'
+          type: "RPL"
         },
         {
           name: "Back-End Developer",
           value: "backend",
           icon: require("@/assets/web.png"),
-          type:'rpl'
+          type: "RPL"
         },
         {
-          name: "Game Developer",
-          value: "gdc",
+          name: "Game Programmer",
+          value: "gp",
           icon: require("@/assets/game.png"),
-          type:'gdc'
+          type: "GDC"
+        },
+        {
+          name: "Audio Composer",
+          value: "ac",
+          icon: require("@/assets/game.png"),
+          type: "GDC"
+        },
+        {
+          name: "Game Designer",
+          value: "gd",
+          icon: require("@/assets/game.png"),
+          type: "GDC"
+        },
+        {
+          name: "Game Artist",
+          value: "ga",
+          icon: require("@/assets/game.png"),
+          type: "GDC"
         },
         {
           name: "UI/UX Designer",
           value: "uiux",
           icon: require("@/assets/uiux.png"),
-          type:'rpl'
+          type: "RPL"
         }
       ],
       steps: 1,
@@ -616,7 +651,7 @@ export default {
       genderType: "",
       year: "",
       divisi: "",
-      role:'',
+      role: "",
       portfolio: "",
       cvName: "",
       motivationName: "",
@@ -634,7 +669,7 @@ export default {
   },
   created() {
     let now = new Date();
-    let deadline = this.$store.state.recruitment.deadline
+    let deadline = this.$store.state.recruitment.deadline;
     if (now > deadline) {
       this.close = true;
     }
@@ -804,8 +839,8 @@ export default {
       fileData.append("jenis_kelamin", this.genderType);
       fileData.append("jurusan", this.major);
       fileData.append("angkatan", this.year);
-      fileData.append("divisi", this.divisi);
-      fileData.append("role", this.role);
+      fileData.append("divisi", this.role);
+      // fileData.append("role", this.role);
       fileData.append("foto_profile", this.image);
       fileData.append("cv", this.fileCv);
       fileData.append("motivation_letter", this.motivation);
@@ -988,8 +1023,11 @@ h1, label, .v-btn
       padding-left: 45px
       padding-right: 25px
 
-  .radio__item--divisi
+  .radio__item--role
     margin-bottom: 15px
+    .radio__selected
+      background: $orange-gradient
+      color: white
 
   .radio__selected
     background: $orange-gradient

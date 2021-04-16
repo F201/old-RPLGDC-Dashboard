@@ -125,6 +125,7 @@ export default {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
 
   .carousel__bg
+    color: black
     .carousel__content--img
       width: 202px
       height: 202px
