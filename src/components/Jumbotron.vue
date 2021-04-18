@@ -25,9 +25,9 @@
           class="jumbotron__content--button mt-4 white"
           v-show="this.$route.path === '/'"
           text
-          to="/play-game"
+          to="/recruitment"
         >
-          <span class="jumbotron__content--button-text">PLAY OUR GAME</span>
+          <span class="jumbotron__content--button-text">REGISTER HERE</span>
         </v-btn>
         <v-btn
           class="jumbotron__content--button mt-12 white"
