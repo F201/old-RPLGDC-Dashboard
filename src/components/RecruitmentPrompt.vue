@@ -15,6 +15,7 @@
           text
           @click="check = true"
           to="/play-game"
+          v-if="close"
           >CHECK REGISTRATION STATUS</v-btn
         >
         <v-btn
