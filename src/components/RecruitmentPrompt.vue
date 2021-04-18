@@ -8,7 +8,7 @@
     </template>
 
     <v-card class="d-flex flex-column pa-12">
-      <template v-if="check == false && result == false">
+      <template v-if="check == false && result == false && close">
         <v-btn
           class="white--text"
           depressed
