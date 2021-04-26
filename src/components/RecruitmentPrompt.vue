@@ -9,14 +9,12 @@
 
     <v-card class="d-flex flex-column pa-12">
       <template v-if="check == false && result == false">
-        <v-btn class="white--text" depressed text to="/play-game" v-if="close2"
-          >CHECK REGISTRATION STATUS</v-btn
-        >
         <v-btn
           class="white--text"
           depressed
           text
           @click="check = true"
+          to="/play-game"
           v-if="close"
           >CHECK REGISTRATION STATUS</v-btn
         >
@@ -155,20 +153,14 @@ export default {
       result: false,
       loading: false,
       close: false,
-      close2: false,
       tahap1: {}
     };
   },
   created() {
-    const now = new Date();
-    const deadline = this.$store.state.recruitment.deadline;
-    const deadline2 = this.$store.state.recruitment.deadline2;
+    let now = new Date();
+    let deadline = this.$store.state.recruitment.deadline;
     if (now > deadline) {
       this.close = true;
-    }
-
-    if (now > deadline2) {
-      this.close2 = true;
     }
   },
   methods: {
