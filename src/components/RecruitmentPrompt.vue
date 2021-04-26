@@ -110,7 +110,7 @@
             <label>Interview Form</label>
             <div class="mt-2">
               Please fill in the
-              <a href="http://bit.ly/wawancara_RPLGDC20">interview form</a>
+              <a href="http://bit.ly/WawancaraRPLGDC">interview form</a>
             </div>
           </div>
         </template>
