@@ -568,7 +568,7 @@ export default {
         "S1 Teknik Komputer",
         "S1 Informatika",
         "S1 Teknologi Informasi",
-        "S1 Rekaya Perangkat Lunak",
+        "S1 Rekayasa Perangkat Lunak",
         "S1 Teknik Industri",
         "S1 Sistem Informasi",
         "S1 Teknik Logistik",
@@ -582,7 +582,7 @@ export default {
         "S1 Desain Interior",
         "S1 Kriya Tekstil dan Mode",
         "S1 Creative Arts",
-        "S1 Terapa Teknologi Rekayasa Multimedia"
+        "S1 Terapan Teknologi Rekayasa Multimedia"
       ],
       generation: [1, 2, 3]
         .map(item => new Date().getFullYear() - item)
