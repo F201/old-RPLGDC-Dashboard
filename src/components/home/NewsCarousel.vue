@@ -113,6 +113,7 @@ export default {
     position: relative
     max-width: 460px
     min-height: 100%
+    color: black
 
     .carousel-container__content--name
       font-family: $raleway
