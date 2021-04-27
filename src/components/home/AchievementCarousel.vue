@@ -172,6 +172,7 @@ export default {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
 
   .carousel__bg
+    color: black
     .v-icon
       background-color: $orange-color
       border-radius: 100px
