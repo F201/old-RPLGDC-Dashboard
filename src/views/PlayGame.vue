@@ -15,7 +15,7 @@
       </template>
       <template v-else>
         <div class="game-container d-flex justify-center align-center">
-          <iframe :src="link" width="995px" height="569px"></iframe>
+          <iframe :src="link" width="1048px" height="620px"></iframe>
         </div>
       </template>
     </div>
