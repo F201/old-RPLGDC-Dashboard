@@ -4,7 +4,8 @@ export default {
   namespaced: true,
   state: {
     loading: false,
-    deadline: new Date("May 24 2021 12:00:00")
+    deadline: new Date("Apr 24 2021 23:59:59"),
+    deadline2: new Date("24 Mei 2021 12:00:00")
   },
   mutations: {
     LOADING(state) {
