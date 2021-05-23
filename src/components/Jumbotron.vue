@@ -25,7 +25,6 @@
           class="jumbotron__content--button mt-4 white"
           v-show="this.$route.path === '/'"
           text
-          v-if="close"
           to="/recruitment"
         >
           <span class="jumbotron__content--button-text">REGISTER HERE</span>
@@ -86,18 +85,6 @@ export default {
   },
   components: {
     TopToolbar
-  },
-  created() {
-    const now = new Date();
-    const deadline = this.$store.state.recruitment.deadline;
-    if (now > deadline) {
-      this.close = true;
-    }
-  },
-  data() {
-    return {
-      close: false
-    };
   },
   methods: {
     goTo: el => {
