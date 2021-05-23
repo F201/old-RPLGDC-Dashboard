@@ -166,7 +166,6 @@ export default {
     if (now > deadline) {
       this.close = true;
     }
-
     if (now > deadline2) {
       this.close2 = true;
     }
