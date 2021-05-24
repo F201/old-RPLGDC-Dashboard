@@ -17,15 +17,10 @@
           depressed
           text
           @click="check = true"
-          v-if="close"
+          v-else-if="close"
           >CHECK REGISTRATION STATUS</v-btn
         >
-        <v-btn
-          class="white--text mt-6"
-          depressed
-          text
-          to="/recruitment"
-          v-if="close == false"
+        <v-btn class="white--text mt-6" depressed text to="/recruitment" v-else
           >REGISTER NOW</v-btn
         >
       </template>
