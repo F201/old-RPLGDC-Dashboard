@@ -25,7 +25,16 @@
           class="jumbotron__content--button mt-4 white"
           v-show="this.$route.path === '/'"
           text
-          v-if="close"
+          v-if="close2"
+          to="/play-game"
+        >
+          <span class="jumbotron__content--button-text">PLAY OUR GAME</span>
+        </v-btn>
+        <v-btn
+          class="jumbotron__content--button mt-4 white"
+          v-show="this.$route.path === '/'"
+          text
+          v-else-if="close"
           to="/recruitment"
         >
           <span class="jumbotron__content--button-text">REGISTER HERE</span>
@@ -90,13 +99,19 @@ export default {
   created() {
     const now = new Date();
     const deadline = this.$store.state.recruitment.deadline;
+    const deadline2 = this.$store.state.recruitment.deadline2;
     if (now > deadline) {
       this.close = true;
+    }
+
+    if (now > deadline2) {
+      this.close2 = true;
     }
   },
   data() {
     return {
-      close: false
+      close: false,
+      close2: false
     };
   },
   methods: {
